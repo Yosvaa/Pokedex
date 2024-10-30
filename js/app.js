@@ -1,0 +1,1 @@
+import { pokemons } from './pokemon.js';
