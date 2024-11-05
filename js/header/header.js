@@ -1,11 +1,14 @@
-import { pokemons } from "./pokemon.js";
+import { pokemons } from "../pokemon.js";
+
+export function header(){
+    barraBusqueda();
+}
 
 function barraBusqueda() {
 
-    let body = document.getElementsByClassName('body')[0];
     let header = document.getElementsByTagName('header')[0];
     let input = document.createElement('input');
-    let img=document.createElement('img');
+    let img = document.createElement('img');
     //img.setAttribute("src","/fotos/lupa.png");
     //header.appendChild(img);
     input.setAttribute("id","busqueda");
@@ -42,5 +45,3 @@ function barraBusqueda() {
     });
 
 }
-
-barraBusqueda();
