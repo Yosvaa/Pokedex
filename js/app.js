@@ -1,4 +1,5 @@
-import { main } from './main.js';
+import { main } from './main/main.js';
 
 let num = Math.floor(Math.random() * 151 + 1);
-main(124);
+
+main(132);

@@ -1,4 +1,5 @@
-import { pokemons } from './pokemon.js';
+import { pokemons } from '../pokemon.js';
+import { pagina1 } from './pagina1.js';
 
 let MAX_HP = 0;
 let MAX_ATAQUE = 0;
@@ -6,8 +7,6 @@ let MAX_DEFENSA = 0;
 let MAX_ATAQUE_ESPECIAL = 0;
 let MAX_DEFENSA_ESPECIAL = 0;
 let MAX_VELOCIDAD = 0;
-
-obtenerEstadisticasMaximas(pokemons);
 
 export function main(id){
     let pokemon;
@@ -19,6 +18,7 @@ export function main(id){
         }
     });
 
+    obtenerEstadisticasMaximas();
     // MAIN
     let main = document.getElementsByTagName('main')[0];
     main.setAttribute("style", "border: 0.1em solid tomato; font-family: 'Press Start 2P', sans-serif; display: flex; justify-content: space-between; width: 37em;");
@@ -64,11 +64,12 @@ export function main(id){
     // IMAGEN POKEMON
     let img = document.createElement('img');
     img.src = "./img/Pokemon/" + pokemon['id'] + ".png";
-    img.setAttribute("style","height: 8em; margin: 0.8em;");
+    img.setAttribute("style","height: 8em; margin-top: 1em;");
     divIzq.appendChild(img);
 
     // TIPOS
     let table = document.createElement('table');
+    table.setAttribute("style", "margin: 0.5em;");
     let tr = document.createElement('tr');
     pokemon['tipos'].forEach(tipo => {
         let td = document.createElement('td');
@@ -83,7 +84,7 @@ export function main(id){
 
     // ESTADISTICAS
     table = document.createElement('table');
-    table.setAttribute("style", "font-size: 0.7em; display: flex; flex-direction: column; justify-content: space-between; width: 100%; margin-top: 0.8em;")
+    table.setAttribute("style", "font-size: 0.7em; display: flex; flex-direction: column; justify-content: space-between; width: 100%;")
 
     for (let estadistica in pokemon['estadisticas_base']) {
         let numStat = pokemon['estadisticas_base'][estadistica];
@@ -142,10 +143,12 @@ export function main(id){
     divIzq.appendChild(table);
 
     main.appendChild(divIzq);
+    let pagina = pagina1(id);
+    divDch.appendChild(pagina);
     main.appendChild(divDch);
 }
 
-function obtenerEstadisticasMaximas(pokemons) {
+function obtenerEstadisticasMaximas() {
     let max_hp = 0;
     let max_ataque = 0;
     let max_defensa = 0;
