@@ -1,5 +1,5 @@
 import { pokemons } from '../pokemon.js';
-import { pagina1 } from './pagina1.js';
+import { paginas } from './paginas.js';
 
 let MAX_HP = 0;
 let MAX_ATAQUE = 0;
@@ -7,6 +7,7 @@ let MAX_DEFENSA = 0;
 let MAX_ATAQUE_ESPECIAL = 0;
 let MAX_DEFENSA_ESPECIAL = 0;
 let MAX_VELOCIDAD = 0;
+obtenerEstadisticasMaximas();
 
 export function main(id){
     let pokemon;
@@ -18,10 +19,9 @@ export function main(id){
         }
     });
 
-    obtenerEstadisticasMaximas();
     // MAIN
     let main = document.getElementsByTagName('main')[0];
-    main.setAttribute("style", "border: 0.1em solid tomato; font-family: 'Press Start 2P', sans-serif; display: flex; justify-content: space-between; width: 37em;");
+    main.setAttribute("style", "border: 0.1em solid tomato; font-family: 'Press Start 2P', sans-serif; display: flex; justify-content: space-between; width: 34em;");
     
     // AÑADIR FUENTE
     let link = document.createElement('link');
@@ -32,12 +32,6 @@ export function main(id){
     // DIV IZQUIERDA
     let divIzq = document.createElement('div');
     divIzq.setAttribute("style", 
-        "margin: 0.5em; display: flex; flex-direction: column; align-items: center; width: 17em; min-width: 17em; max-width: 17em; border: 0.1em solid tomato; width: 100%;"
-    );
-
-    // DIV DERECHA
-    let divDch = document.createElement('div');
-    divDch.setAttribute("style", 
         "margin: 0.5em; display: flex; flex-direction: column; align-items: center; width: 17em; min-width: 17em; max-width: 17em; border: 0.1em solid tomato; width: 100%;"
     );
 
@@ -98,33 +92,33 @@ export function main(id){
 
         // AÑADIR BARRA
         let tdBarra = document.createElement('td');
-        tdBarra.setAttribute("style", "border: 0.1em solid black; width: 7em;");
+        tdBarra.setAttribute("style", "border: 0.1em solid black; width: 7em; border-radius: 0.3em;");
         let barra = document.createElement('div');
 
         switch (estadistica) {
             case "hp":
                 tdNameStat.textContent = "hp";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_HP) * 100) + "%; height: 1em; background-color: black;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_HP) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
                 break;
             case "ataque":
                 tdNameStat.textContent = "atq";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE) * 100) + "%; height: 1em; background-color: black;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
                 break;
             case "defensa":
                 tdNameStat.textContent = "def";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA) * 100) + "%; height: 1em; background-color: black;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
                 break;
             case "ataque_especial":
                 tdNameStat.textContent = "atq_sp";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE_ESPECIAL) * 100) + "%; height: 1em; background-color: black;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE_ESPECIAL) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
                 break;
             case "defensa_especial":
                 tdNameStat.textContent = "def_sp";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA_ESPECIAL) * 100) + "%; height: 1em; background-color: black;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA_ESPECIAL) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
                 break;
             case "velocidad":
                 tdNameStat.textContent = "vel";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_VELOCIDAD) * 100) + "%; height: 1em; background-color: black;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_VELOCIDAD) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
                 break;
         }
         tr.appendChild(tdNameStat);
@@ -133,19 +127,18 @@ export function main(id){
         tr.appendChild(tdBarra);
 
         // AÑADIR NUMEROS
-        let tdNumStat = document.createElement('td');
-        tdNumStat.textContent = numStat;
-        tr.appendChild(tdNumStat);
-
+        let tdStatContent = document.createElement('td');
+        tdStatContent.textContent = numStat;
+        tr.appendChild(tdStatContent);  
+        
         table.appendChild(tr);
     }
 
     divIzq.appendChild(table);
 
     main.appendChild(divIzq);
-    let pagina = pagina1(id);
-    divDch.appendChild(pagina);
-    main.appendChild(divDch);
+
+    main.appendChild(paginas(id));
 }
 
 function obtenerEstadisticasMaximas() {
