@@ -1,35 +1,108 @@
 import { pokemons } from "../pokemon.js";
-
-export function header(){
+export function header() {
     barraBusqueda();
 }
+
+const estilos = document.createElement("style");
+estilos.textContent = `
+
+header {
+    width:100%;
+    background-color: white;
+    margin-bottom:5px;
+}
+.inputBusqueda{
+    width: 28px;
+    height: 25px;
+
+    visibility: hidden 4s;
+    -webkit-appearance: none;
+    display: flex;
+    justify-self: end;
+    margin-right: 31px;
+    margin-top: 20px;
+
+    border-radius: 100px;
+    outline: none;
+    border: 3px solid rgb(111, 215, 215);
+    padding: 5px;
+
+    
+    }
+    .inputBusqueda.activo {
+    animation: example ease forwards;
+    animation-duration: 3s;
+    animation-delay: 0s;
+    }
+
+    @keyframes example {
+        0% {
+            width: 28px;
+            visibility: visible;
+        }
+        100% {
+            width: 150px;
+            visibility: visible;
+        }
+
+    }
+
+    .fotoLupa {
+        position: absolute;
+        width : 25px;
+        height: 25px;
+        position: absolute;
+        right: 0;
+        margin-right: 48.5px;
+        margin-top: 6px;
+
+    }
+    .fotoLupa.encima{
+        Cursor : pointer;
+    }
+
+    .ulEstilo{
+        list-style-type:none;
+        margin-top:30px;
+        margin-right:9.3em; 
+        display: block;
+        justify-self: end;
+        margin-right: 100px;
+        margin-top: 20px;
+    }
+`;
+document.head.appendChild(estilos);
 
 function barraBusqueda() {
 
     let header = document.getElementsByTagName('header')[0];
-    let input = document.createElement('input');
+    
     let img = document.createElement('img');
-    //img.setAttribute("src","/fotos/lupa.png");
-    //header.appendChild(img);
-    input.setAttribute("id","busqueda");
+    img.setAttribute("src", "/img/lupa.png");
+    img.setAttribute("class","fotoLupa");
+    header.appendChild(img);
+    
+    let input = document.createElement('input');
+    input.setAttribute("id", "busqueda");
     input.type = "text";
+    input.setAttribute("class", "inputBusqueda");
     header.appendChild(input);
-    input.setAttribute("style","position:absolute; right:0; margin-right:70px; border-radius:22px; -webkit-appearance: none;  outline: none; border: 3px solid rgb(111, 215, 215); padding: 5px; margin-top: 20px;");
+
     let ul = document.createElement('ul');
-    ul.setAttribute("style","")
+    ul.setAttribute("class","ulEstilo");
+
     header.appendChild(ul);
     /**
      * Con esta funcion creamos la forma en la que vamos a mostrar los resultados 
      * en este caso es en forma de lista.
      * @param {object} resultado 
      */
-    
+
     function mostrarResultados(resultado) {
         ul.innerHTML = ""; //limpia los resultados anteriores
         resultado.forEach(i => {
             let li = document.createElement('li');
             li.textContent = i['nombre'];
-            ul.setAttribute("style","position:absolute; right:0; margin-right:80px;");
             ul.appendChild(li);
         });
     }
@@ -44,4 +117,14 @@ function barraBusqueda() {
 
     });
 
+    img.addEventListener("mouseover",()=>{
+        img.classList.toggle("encima");
+    });
+
+    img.addEventListener("click",()=>{
+        input.classList.toggle("activo");
+    });
+
 }
+
+
