@@ -78,7 +78,7 @@ function barraBusqueda() {
     let header = document.getElementsByTagName('header')[0];
     
     let img = document.createElement('img');
-    img.setAttribute("src", "/img/lupa.png");
+    img.setAttribute("src", "/img/iconos/lupa.png");
     img.setAttribute("class","fotoLupa");
     header.appendChild(img);
     

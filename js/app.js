@@ -4,5 +4,6 @@ import { header } from './header/header.js';
 
 let num = Math.floor(Math.random() * 151 + 1);
 
-main(103);
+header();
+main(num);
 

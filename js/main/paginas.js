@@ -1,5 +1,8 @@
 import { pokemons } from '../pokemon.js';
 
+let pokemon;
+let color;
+
 export function paginas(id){
     encontrarPokemon(id);
     colorPokemon(pokemon);
@@ -8,23 +11,22 @@ export function paginas(id){
     return pagina;
 }
 
-let pokemon;
-let color;
-
 // CREAR PÁGINA
 let pagina = document.createElement("div");
-pagina.setAttribute("style", 
-    `margin: 0.5em; 
+pagina.setAttribute("style", `
+    margin: 0.2em;
+    padding: 0.7em; 
     display: flex;
     flex-direction: column;
-    width: 100%;
-    border: 0.1em solid tomato; 
+    width: 30em;
+    border: 0.25em solid #111;
+    border-radius: 3%;
 `);
 
 // CREAR TABLE
 let table = document.createElement('table');
-table.setAttribute("style", 
-    `font-size: 0.7em; 
+table.setAttribute("style", `
+    font-size: 0.7em; 
     display: flex; 
     flex-direction: column;
     justify-content: center;
@@ -35,6 +37,7 @@ table.setAttribute("style",
 // CREAR BOTÓN
 let boton = document.createElement("button");
 boton.setAttribute("style", `
+    margin-top: 1em;
     width: 2em;
     height: 2em;
     background-size: contain;
@@ -54,20 +57,22 @@ function tablePagina1(){
         if (estadisticas.includes(estadistica)){
             
             let tr = document.createElement('tr');
-            tr.setAttribute("style", "margin-top: 0.5em; display: flex; flex-direction: row;");
+            tr.setAttribute("style", "margin: 1em; display: flex; flex-direction: row;");
 
             // AÑADIR NOMBRE DE ESTADÍSTICA
             let tdNameStat = document.createElement('td');
-            tdNameStat.setAttribute("style", 
-                `border: 0.1em solid;
+            tdNameStat.setAttribute("style", `
+                border: 0.2em solid;
                 border-radius: 0.5em;
-                padding: 0.5em;
+                padding: 0.75em;
                 width: 55%;
                 background-color: ${color};
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
-                margin-right: 0.5em;`);
+                margin-right: 0.5em;
+                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+            `);
 
             let numStat = pokemon[estadistica];
 
@@ -141,20 +146,24 @@ function tablePagina2(){
         if (estadisticas.includes(estadistica)){
             
             let tr = document.createElement('tr');
-            tr.setAttribute("style", "margin-top: 0.5em; display: flex; flex-direction: row;");
+            tr.setAttribute("style", "margin-top: 0.8em; display: flex; flex-direction: row;");
 
             // AÑADIR NOMBRE DE ESTADÍSTICA
             let tdNameStat = document.createElement('td');
             tdNameStat.setAttribute("style", 
-                `border: 0.1em solid;
+                `border: 0.2em solid;
                 border-radius: 0.5em;
                 padding: 0.5em;
-                width: 60%;
+                width: 65%;
                 background-color: ${color};
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
-                margin-right: 0.5em;`);
+                margin-right: 0.5em;
+                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+                background-size: cover;
+                background-position: center;
+            `);
 
             switch (estadistica) {
                 case "fuerza_contra":
@@ -190,7 +199,7 @@ function tablePagina2(){
                 pokemon[estadistica].forEach(tipo => {
                     let img = document.createElement('img');
                     img.src = "./img/Tipo/" + tipo + ".png";
-                    img.setAttribute("style","height: 1.4em; margin: 0.1em;");
+                    img.setAttribute("style","height: 1.5em; border: 0.1em solid #111; border-radius: 1em; margin: 0.2em;");
 
                     tdTipo.appendChild(img);
                 });
@@ -212,14 +221,12 @@ function cambiarPag(){
     if (boton.id == "boton1") {
         table.innerHTML = "";
         pagina.appendChild(tablePagina2());
-        boton.id = "boton2";
         pagina.appendChild(boton);
     } 
     
     else if (boton.id == "boton2") {
         table.innerHTML = "";
         pagina.appendChild(tablePagina1());
-        boton.id = "boton1";
         pagina.appendChild(boton);
     }
 }
@@ -233,40 +240,58 @@ function encontrarPokemon(id){
 }
 
 function colorPokemon(pokemon) {
-    color = pokemon['color'];
-    switch (color) {
-        case "Rojo":
-            color = "#f1948a";
+    let tipo = pokemon['tipos'][0];
+    switch (tipo) {
+        case "Fuego":
+            color = "rgba(236, 109, 110, 0.5)";
             break;
-        case "Blanco":
-            color = "#f8f9f9";
+        case "Hada":
+            color = "rgba(245, 198, 231, 0.5)";
             break;
-        case "Rosa":
-            color = "#f5c6e7";
+        case "Eléctrico":
+            color = "rgba(249, 231, 159, 0.5)";
             break;
-        case "Amarillo":
-            color = "#f9e79f";
+        case "Tierra":
+            color = "rgba(162, 108, 65, 0.5)";
             break;
-        case "Marrón":
-            color = "#d7bfbf";
+        case "Veneno":
+            color = "rgba(215, 189, 226, 0.5)";
             break;
-        case "Púrpura":
-            color = "#d7bde2";
+        case "Planta":
+            color = "rgba(156, 204, 140, 0.5)";
             break;
-        case "Verde":
-            color = "#abebc6";
+        case "Bicho":
+            color = "rgba(196, 204, 140, 0.5)";
             break;
-        case "Naranja":
-            color = "#f8c471";
+        case "Lucha":
+            color = "rgba(252, 188, 120, 0.5)";
             break;
-        case "Morado":
-            color = "#d2b4de";
+        case "Psíquico":
+            color = "rgba(244, 156, 188, 0.5)";
             break;
-        case "Azul":
-            color = "#aed6f1";
+        case "Agua":
+            color = "rgba(137, 188, 244, 0.5)";
+            break;
+        case "Dragón":
+            color = "rgba(140, 150, 233, 0.5)";
+            break;
+        case "Roca":
+            color = "rgba(200, 195, 168, 0.5)";
+            break;
+        case "Hielo":
+            color = "rgba(175, 239, 252, 0.5)";
+            break;
+        case "Fantasma":
+            color = "rgba(159, 128, 159, 0.5)";
+            break;
+        case "Acero":
+            color = "rgba(127, 179, 196, 0.5)";
+            break;
+        case "Siniestro":
+            color = "rgba(132, 84, 132, 0.5)";
             break;
         default:
-            color = "#e5e8e8";
+            color = "rgba(204, 204, 204, 0.5)";
             break;
     }
 }

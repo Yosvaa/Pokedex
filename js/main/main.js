@@ -9,19 +9,28 @@ let MAX_DEFENSA_ESPECIAL = 0;
 let MAX_VELOCIDAD = 0;
 obtenerEstadisticasMaximas();
 
+let color;
+
 export function main(id){
     let pokemon;
-
+    
     // ENCONTRAR POKEMON
     pokemons.forEach(objetoPokemon => {
         if (objetoPokemon['id'] == id){
             pokemon = objetoPokemon;
         }
     });
+    
+    colorPokemon(pokemon);
 
     // MAIN
     let main = document.getElementsByTagName('main')[0];
-    main.setAttribute("style", "border: 0.1em solid tomato; font-family: 'Press Start 2P', sans-serif; display: flex; justify-content: space-between; width: 34em;");
+    main.setAttribute("style", 
+        `font-family: 'Press Start 2P', sans-serif; 
+        display: flex; 
+        width: 40em;
+        height: 32em;
+    `);
     
     // AÑADIR FUENTE
     let link = document.createElement('link');
@@ -31,9 +40,25 @@ export function main(id){
 
     // DIV IZQUIERDA
     let divIzq = document.createElement('div');
-    divIzq.setAttribute("style", 
-        "margin: 0.5em; display: flex; flex-direction: column; align-items: center; width: 17em; min-width: 17em; max-width: 17em; border: 0.1em solid tomato; width: 100%;"
-    );
+    divIzq.setAttribute("style", `
+        margin: 0.15em;
+        font-size: 1.2em;
+        padding: 0.7em; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        justify-content: space-between;
+        width: 16em; 
+        min-width: 16em; 
+        max-width: 16em; 
+        border: 0.2em solid #111;
+        border-radius: 3%;
+        width: 100%;
+
+        background-image: url('./img/iconos/card.png'), radial-gradient(circle at center 33%, white 10%, ${color} 75%);
+        background-size: cover;
+        background-position: center;
+    `);
 
     //  DIV NOMBRE+ID
     let divNameId = document.createElement('div');
@@ -58,7 +83,7 @@ export function main(id){
     // IMAGEN POKEMON
     let img = document.createElement('img');
     img.src = "./img/Pokemon/" + pokemon['id'] + ".png";
-    img.setAttribute("style","height: 8em; margin-top: 1em;");
+    img.setAttribute("style","height: 7em; margin-top: 1em;");
     divIzq.appendChild(img);
 
     // TIPOS
@@ -69,7 +94,7 @@ export function main(id){
         let td = document.createElement('td');
         img = document.createElement('img');
         img.src = "./img/Tipo/" + tipo + ".png";
-        img.setAttribute("style","height: 1em;");
+        img.setAttribute("style","height: 1em; border: 0.1em solid #111; border-radius: 0.7em;");
         td.appendChild(img);
         tr.appendChild(td);
     });
@@ -88,37 +113,37 @@ export function main(id){
 
         // AÑADIR NOMBRE DE ESTADÍSTICA
         let tdNameStat = document.createElement('td');
-        tdNameStat.setAttribute("style", "width: 8em; text-align: right;");
+        tdNameStat.setAttribute("style", "width: 6.7em; text-align: right;");
 
         // AÑADIR BARRA
         let tdBarra = document.createElement('td');
-        tdBarra.setAttribute("style", "border: 0.1em solid black; width: 7em; border-radius: 0.3em;");
+        tdBarra.setAttribute("style", `margin-left: 7em; border: 0.15em solid black; width: 9em; border-radius: 0.3em; background-color: white`);
         let barra = document.createElement('div');
 
         switch (estadistica) {
             case "hp":
                 tdNameStat.textContent = "hp";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_HP) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_HP) * 100) + "%; height: 1.2em; background-color: black; border-radius: 0.3em;");
                 break;
             case "ataque":
                 tdNameStat.textContent = "atq";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE) * 100) + "%; height: 1.2em; background-color: black; border-radius: 0.3em;");
                 break;
             case "defensa":
                 tdNameStat.textContent = "def";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA) * 100) + "%; height: 1.2em; background-color: black; border-radius: 0.3em;");
                 break;
             case "ataque_especial":
                 tdNameStat.textContent = "atq_sp";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE_ESPECIAL) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_ATAQUE_ESPECIAL) * 100) + "%; height: 1.2em; background-color: black; border-radius: 0.3em;");
                 break;
             case "defensa_especial":
                 tdNameStat.textContent = "def_sp";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA_ESPECIAL) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_DEFENSA_ESPECIAL) * 100) + "%; height: 1.2em; background-color: black; border-radius: 0.3em;");
                 break;
             case "velocidad":
                 tdNameStat.textContent = "vel";
-                barra.setAttribute("style", "width: " + ((numStat / MAX_VELOCIDAD) * 100) + "%; height: 1em; background-color: black; border-radius: 0.3em;");
+                barra.setAttribute("style", "width: " + ((numStat / MAX_VELOCIDAD) * 100) + "%; height: 1.2em; background-color: black; border-radius: 0.3em;");
                 break;
         }
         tr.appendChild(tdNameStat);
@@ -166,4 +191,61 @@ function obtenerEstadisticasMaximas() {
     MAX_ATAQUE_ESPECIAL = max_ataque_especial;
     MAX_DEFENSA_ESPECIAL = max_defensa_especial;
     MAX_VELOCIDAD = max_velocidad;
+}
+
+function colorPokemon(pokemon) {
+    let tipo = pokemon['tipos'][0];
+    switch (tipo) {
+        case "Fuego":
+            color = "#f48c94";
+            break;
+        case "Hada":
+            color = "#f5c6e7";
+            break;
+        case "Eléctrico":
+            color = "#f9e79f";
+            break;
+        case "Tierra":
+            color = "#ac7850";
+            break;
+        case "Veneno":
+            color = "#d7bde2";
+            break;
+        case "Planta":
+            color = "#9ccc8c";
+            break;
+        case "Bicho":
+            color = "#c4cc8c";
+            break;
+        case "Lucha":
+            color = "#fcbc78";
+            break;
+        case "Psíquico":
+            color = "#f49cbc";
+            break;
+        case "Agua":
+            color = "#89bcf4";
+            break;
+        case "Dragón":
+            color = "#8c96e9";
+            break;
+        case "Roca":
+            color = "#c8c3a8";
+            break;
+        case "Hielo":
+            color = "#afeffc";
+            break;
+        case "Fantasma":
+            color = "#9f809f";
+            break;
+        case "Acero":
+            color = "#7fb3c4";
+            break;
+        case "Siniestro":
+            color = "#845484";
+            break;
+        default:
+            color = "#ccc";
+            break;
+    }
 }
