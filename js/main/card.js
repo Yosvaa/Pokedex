@@ -8,7 +8,6 @@ let MAX_DEFENSA_ESPECIAL = 0;
 let MAX_VELOCIDAD = 0;
 
 export function card(pokemon, color){
-
     obtenerEstadisticasMaximas();
 
     // DIV CARD

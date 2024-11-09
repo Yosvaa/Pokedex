@@ -3,13 +3,10 @@ let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
     margin: 0.2em;
-    padding-left: 0.5em; 
-    padding-right: 0.5em;
-    padding-top: 2em;
-    padding-bottom: 2em;
+    padding: 1em;
     display: flex; 
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     width: 100%;
     height: 100%;
     border: 0.3em solid #111;
@@ -22,10 +19,13 @@ export function pagina01(pokemon, color){
     let estadisticasBoolean = ["es_legendario", "es_mitico"];
 
     for (let estadistica in pokemon) {
-        if (estadisticas.includes(estadistica)){
+        if (estadisticas.includes(estadistica) && (pokemon[estadistica] || estadistica == "amistad_base")){
             
             let tr = document.createElement('tr');
-            tr.setAttribute("style", "margin: 0.9em; display: flex; flex-direction: row;");
+            tr.setAttribute("style", `
+                display: flex; 
+                flex-direction: row;
+            `);
 
             // AÑADIR NOMBRE DE ESTADÍSTICA
             let tdNameStat = document.createElement('td');
@@ -33,12 +33,12 @@ export function pagina01(pokemon, color){
                 border: 0.2em solid;
                 border-radius: 0.5em;
                 padding: 0.75em;
-                width: 45%;
-                background-color: ${color};
+                width: 50%;
                 display: flex;
                 align-items: center;
                 justify-content: flex-end;
                 margin-right: 0.5em;
+                background-color: ${color};
                 background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             `);
 
@@ -62,40 +62,47 @@ export function pagina01(pokemon, color){
                     break;
                 case "habitat":
                     tdNameStat.textContent = "Habitat";
-                    
                     break;
                 case "es_legendario":
-                    if (pokemon[estadistica]){
-                        tdNameStat.textContent = "Legendario";
-                        tr.appendChild(tdNameStat);
-                    }
+                    tdNameStat.textContent = "Legendario";
+                    tdNameStat.style.justifyContent = "center";
+                    tdNameStat.style.width = "65%";
+                    tr.style.justifyContent = "center";
                     break;
                 case "es_mitico":
-                    if (pokemon[estadistica]){
-                        tdNameStat.textContent = "Mítico";
-                        tr.appendChild(tdNameStat);
-                    }
+                    tdNameStat.textContent = "Mítico";
+                    tdNameStat.style.justifyContent = "center";
+                    tdNameStat.style.width = "65%";
+                    tr.style.justifyContent = "center";
                     break;
             }
+
+            tr.appendChild(tdNameStat);
+
             // AÑADIR CONTENIDO
             if (!estadisticasBoolean.includes(estadistica)){
-                tr.appendChild(tdNameStat);
-
+                
                 let tdStatContent = document.createElement('td');
                 tdStatContent.setAttribute("style", 
                     `display: flex;
                     align-items: center;
                     justify-content: flex-start;
-                    width: 45%;
+                    width: 50%;
                 `)
 
                 if (estadistica == "peso") tdStatContent.textContent = numStat + "kg";
                 else if (estadistica == "altura") tdStatContent.textContent = numStat + "m";
+                else if (estadistica == "género") {
+                    tdStatContent.innerHTML = 
+                        "♂ " + pokemon[estadistica]['macho'] + "%<br>" + 
+                        "♀ " + pokemon[estadistica]['hembra'] + "%";
+                }
                 else tdStatContent.textContent = numStat;
 
                 tr.appendChild(tdStatContent);
-                table.appendChild(tr);
+                
             }
+            table.appendChild(tr);
         }
     }
     return table;

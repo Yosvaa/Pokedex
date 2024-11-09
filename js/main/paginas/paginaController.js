@@ -9,9 +9,9 @@ export function paginas(pokemon, color){
         font-size: 11px;
         display: flex;
         flex-direction: column;
-        width: 23em;
-        min-width: 23em;
-        max-width: 23em;
+        width: 25em;
+        min-width: 25em;
+        max-width: 25em;
     `);
 
     // MONTAR PAGINA

@@ -1,4 +1,4 @@
-import { pokemons } from '../pokemon.js';
+import { pokemons } from '/js/pokemon.js';
 import { paginas } from './paginas/paginaController.js';
 import { card } from './card.js';
 

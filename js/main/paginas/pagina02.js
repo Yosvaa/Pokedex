@@ -91,7 +91,7 @@ export function pagina02(pokemon, color){
                 pokemon[estadistica].forEach(tipo => {
                     let img = document.createElement('img');
                     img.src = "./img/Tipo/" + tipo + ".png";
-                    img.setAttribute("style","height: 1.45em; border: 0.1em solid #111; border-radius: 1em; margin: 0.2em;");
+                    img.setAttribute("style","height: 1.45em; border: 0.15em solid #111; border-radius: 1em; margin: 0.2em;");
 
                     tdTipo.appendChild(img);
                 });
