@@ -44,8 +44,6 @@ export function pagina02(pokemon, color){
                 margin-bottom: 0.3em;
             `);
             
-            
-
             // AÑADIR NOMBRE DE ESTADÍSTICA
             let tdNameStat = document.createElement('td');
             tdNameStat.setAttribute("style", `

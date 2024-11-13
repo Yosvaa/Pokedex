@@ -11,6 +11,7 @@ export function main(id){
 
     // MAIN
     let main = document.getElementsByTagName('main')[0];
+    main.id = "main";
     main.setAttribute("style", `
         font-family: 'Press Start 2P', sans-serif; 
         font-size: 16px;
