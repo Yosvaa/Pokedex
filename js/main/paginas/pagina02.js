@@ -17,6 +17,7 @@ table.setAttribute("style", `
 `);
 
 export function pagina02(pokemon, color){
+    table.innerHTML = "";
     // ESTADISTICAS PARA LA PAGINA
     let estadisticas = ["fuerza_contra", "debil_contra", "inmune_contra", "resistente_a"];
 

@@ -14,6 +14,7 @@ table.setAttribute("style", `
 `);
 
 export function pagina01(pokemon, color){
+    table.innerHTML = "";
     // ESTADISTICAS PARA LA PAGINA
     let estadisticas = ["peso", "altura", "amistad_base", "color", "género", "habitat", "es_legendario", "es_mitico"];
     let estadisticasBoolean = ["es_legendario", "es_mitico"];
@@ -38,8 +39,7 @@ export function pagina01(pokemon, color){
                 align-items: center;
                 justify-content: flex-end;
                 margin-right: 0.5em;
-                background-color: ${color};
-                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+                background-image: url('../../img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             `);
 
             let numStat = pokemon[estadistica];

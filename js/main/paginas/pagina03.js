@@ -1,3 +1,4 @@
+import { main } from '../main.js';
 import { pokemons } from '/js/pokemon.js';
 
 let pokemon;
@@ -8,10 +9,11 @@ let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
     margin: 0.2em;
-    padding: 0.5em; 
+    padding: 0.5em;
+    padding-bottom: 0; 
     display: flex; 
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
@@ -56,6 +58,7 @@ botonCerrar.setAttribute("style", `
 export function pagina03(pokemonAux, colorAux){
     pokemon = pokemonAux;
     color = colorAux;
+    table.innerHTML = "";
 
     // ESTADISTICAS PARA LA PAGINA
     let estadisticas = ["habilidades", "movimientos", "evoluciones"];
@@ -82,14 +85,13 @@ export function pagina03(pokemonAux, colorAux){
                 background-position: center;
                 margin-left: 0.7em;
                 margin-right: 0.7em;
-                margin-top: 0.3em;
-                margin-bottom: 0.3em;
             `);
 
             switch (estadistica) {
 
                 // HABILIDADES
                 case "habilidades":
+                    tr.style.marginTop = "5em";
                     // CREAR BOTON
                     let botonHabilidades = crearBoton("Habilidades »", onclickHabilidades);
                     tr.style.padding = "0";
@@ -99,6 +101,8 @@ export function pagina03(pokemonAux, colorAux){
 
                 // MOVIMIENTOS
                 case "movimientos":
+                    tr.style.marginTop = "0.5em";
+                    tr.style.marginBottom = "7em";
                     // CREAR BOTON
                     let botonMovimientos = crearBoton("Movimientos »", onclickMovimientos);
                     tr.style.padding = "0";
@@ -108,6 +112,8 @@ export function pagina03(pokemonAux, colorAux){
 
                 // EVOLUCIONES
                 case "evoluciones":
+                    tr.style.marginTop = "0";
+                    tr.style.marginBottom = "0";
                     let tdNameEvoluciones = document.createElement('td');
                     tdNameEvoluciones.setAttribute("style", `
                         display: flex;
@@ -195,6 +201,7 @@ function crearDivEvoluciones(src){
         flex-direction: column;
         align-items: center;
         margin: 0;
+        cursor: pointer;
     `;
 
     let img = document.createElement ("img");
@@ -206,6 +213,10 @@ function crearDivEvoluciones(src){
         font-size: 0.9em;
     `;
     p.textContent = "Nº" + src['id'].toString().padStart(3, '0');
+
+    divEvoluciones.onclick = function () {
+        main(src['id']);
+    }
 
     divEvoluciones.appendChild(img);
     divEvoluciones.appendChild(p);
@@ -331,8 +342,6 @@ function onclickMovimientos(){
         contenidoMovimientos.appendChild(info);
 
     });
-
-
 
     contenidoMovimientos.appendChild(botonCerrar);
     overlay.appendChild(contenidoMovimientos);

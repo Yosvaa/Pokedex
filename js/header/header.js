@@ -10,6 +10,7 @@ header {
     width:100%;
     background-color: white;
     margin-bottom:5px;
+    position: absolute;
 }
 .inputBusqueda{
     width: 28px;

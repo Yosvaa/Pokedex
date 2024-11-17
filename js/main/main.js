@@ -11,13 +11,19 @@ export function main(id){
 
     // MAIN
     let main = document.getElementsByTagName('main')[0];
+    // BORRAR SU CONTENIDO SI TIENE
+    while (main.firstChild) {
+        main.removeChild(main.firstChild);
+    }
+
     main.id = "main";
     main.setAttribute("style", `
         font-family: 'Press Start 2P', sans-serif; 
         font-size: 16px;
         display: flex; 
-        width: 38em;
-        height: 27em;
+        width: 35.4m;
+        height: 29em;
+        margin-top: 100px;
     `);
     
     // AÑADIR FUENTE
@@ -27,6 +33,7 @@ export function main(id){
     main.appendChild(link);
 
     // MONTAR CARD + PAGINA
+    
     main.appendChild(card(pokemon, color));
     main.appendChild(paginas(pokemon, color));
 }
@@ -39,29 +46,29 @@ function encontrarPokemon(id){
     });
 }
 
-function colorPokemon(pokemon) {
+export function colorPokemon(pokemon) {
     let tipo = pokemon['tipos'][0];
     switch (tipo) {
         case "Fuego":
             color = "rgba(236, 109, 110, 0.5)";
             break;
         case "Hada":
-            color = "rgba(245, 198, 231, 0.5)";
+            color = "rgba(249, 154, 229, 0.5)";
             break;
         case "Eléctrico":
-            color = "rgba(249, 231, 159, 0.5)";
+            color = "rgba(255, 255, 0, 0.2)";
             break;
         case "Tierra":
             color = "rgba(162, 108, 65, 0.5)";
             break;
         case "Veneno":
-            color = "rgba(215, 189, 226, 0.5)";
+            color = "rgba(215, 83, 239, 0.5)";
             break;
         case "Planta":
-            color = "rgba(156, 204, 140, 0.5)";
+            color = "rgba(53, 249, 53, 0.3)";
             break;
         case "Bicho":
-            color = "rgba(196, 204, 140, 0.5)";
+            color = "rgba(199, 255, 102, 0.5)";
             break;
         case "Lucha":
             color = "rgba(252, 188, 120, 0.5)";
@@ -91,7 +98,8 @@ function colorPokemon(pokemon) {
             color = "rgba(132, 84, 132, 0.5)";
             break;
         default:
-            color = "rgba(204, 204, 204, 0.5)";
+            color = "rgba(0, 0, 0, 0.2)";
             break;
     }
+    return color;
 }
