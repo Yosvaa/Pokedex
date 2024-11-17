@@ -62,7 +62,7 @@ export function colorPokemon(pokemon) {
             color = "rgba(162, 108, 65, 0.5)";
             break;
         case "Veneno":
-            color = "rgba(215, 83, 239, 0.5)";
+            color = "rgba(200, 100, 200, 0.5)";
             break;
         case "Planta":
             color = "rgba(53, 249, 53, 0.3)";

@@ -36,8 +36,8 @@ let botonDch = crearBoton(cambiarDch, '../img/iconos/flechaDerecha.png');
 let divFooter = document.createElement("div");
 divFooter.setAttribute("style", `
     margin: 0;
-    margin-left: 0.4em;
-    padding: 1em; 
+    padding: 1.5em;
+    padding-top: 0em; 
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -60,7 +60,7 @@ export function paginaFooter(idPaginaAux, pokemonAux, colorAux){
             width: 1.2em;
             height: 1.2em;
             background-color: white;
-            border-radius: 100%;
+            border-radius: 0.65em;
             border: 0.25em solid #111; 
         `);
         if (idPagina == i){

@@ -77,28 +77,33 @@ export function pagina01(pokemon, color){
             tr.appendChild(tdNameStat);
 
             // AÑADIR CONTENIDO
-            if (!estadisticasBoolean.includes(estadistica)){
-                
+            if (!estadisticasBoolean.includes(estadistica)) {
                 let tdStatContent = document.createElement('td');
                 tdStatContent.setAttribute("style", 
                     `display: flex;
                     align-items: center;
                     justify-content: flex-start;
                     width: 50%;
-                `)
-
-                if (estadistica == "peso") tdStatContent.textContent = numStat + "kg";
-                else if (estadistica == "altura") tdStatContent.textContent = numStat + "m";
+                `);
+            
+                if (estadistica == "peso") {
+                    tdStatContent.textContent = numStat + "kg";
+                } 
+                else if (estadistica == "altura") {
+                    tdStatContent.textContent = numStat + "m";
+                } 
                 else if (estadistica == "género") {
                     tdStatContent.innerHTML = 
-                        "♂ " + pokemon[estadistica]['macho'] + "%<br>" + 
-                        "♀ " + pokemon[estadistica]['hembra'] + "%";
+                        `♂ ${pokemon[estadistica]['macho']}%`
+                        + '<br>' +
+                        `♀ ${pokemon[estadistica]['hembra']}%`;
+                } 
+                else {
+                    tdStatContent.textContent = numStat;
                 }
-                else tdStatContent.textContent = numStat;
-
+            
                 tr.appendChild(tdStatContent);
-                
-            }
+            }            
             table.appendChild(tr);
         }
     }

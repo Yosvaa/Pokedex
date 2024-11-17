@@ -77,7 +77,7 @@ export function pagina03(pokemonAux, colorAux){
                 border: 0.2em solid;
                 border-radius: 0.5em;
                 background-color: ${color};
-                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
                 background-size: cover;
                 background-position: center;
                 margin-left: 0.7em;

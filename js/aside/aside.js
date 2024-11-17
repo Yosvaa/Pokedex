@@ -31,8 +31,9 @@ export function aside(){
             overflow: auto;
         `);
     
-        pokemons.forEach(pokemon => {
-            let color = colorPokemon(pokemon);
+    // BUSCA EN EL ARRAY DE POKEMONS
+    pokemons.forEach(pokemon => {
+        let color = colorPokemon(pokemon);
 
         // DIV POKEMON
         let divPokemon = document.createElement('scroll-page');

@@ -15,6 +15,9 @@ export function paginas(pokemon, color){
         border: 0.3em solid #111;
         border-radius: 1.4em;
         border-left: none;
+        background-image: url('./img/iconos/card.png');
+        background-size: cover;
+        background-position: center;
     `);
 
     // MONTAR PAGINA
