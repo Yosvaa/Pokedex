@@ -16,10 +16,8 @@ export function aside(){
         font-size: 16px;
         flex-direction: column; 
         width: 16.5em;
-        height: 27.9em;
-        order: 0.2em solid #111;
-        border-radius: 0.5em;
-        margin-top: 100px;
+        height: 29em;
+        margin-top: 130px;
         margin-left: 0.5em;
     `);
 
@@ -44,11 +42,9 @@ export function aside(){
             display: flex; 
             align-items: center;
             gap: 0.5em;
-            border: 0.15em solid #111;
-            border-radius: 0.4em;
+            border-radius: 0.7em;
             cursor: pointer;
-            background-image: url('../img/iconos/card.png');
-            background-color: ${color};
+            background-image: url('./img/iconos/card.png'), radial-gradient(circle at right, white, ${color});
             background-size: cover;
             background-position: center;
         `);

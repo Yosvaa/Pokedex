@@ -12,6 +12,9 @@ export function paginas(pokemon, color){
         width: 25em;
         min-width: 25em;
         max-width: 25em;
+        border: 0.3em solid #111;
+        border-radius: 1.4em;
+        border-left: none;
     `);
 
     // MONTAR PAGINA

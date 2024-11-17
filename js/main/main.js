@@ -23,7 +23,7 @@ export function main(id){
         display: flex; 
         width: 35.4m;
         height: 29em;
-        margin-top: 100px;
+        margin-top: 130px;
     `);
     
     // AÑADIR FUENTE

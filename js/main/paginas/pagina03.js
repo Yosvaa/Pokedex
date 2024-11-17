@@ -8,7 +8,6 @@ let color;
 let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
-    margin: 0.2em;
     padding: 0.5em;
     padding-bottom: 0; 
     display: flex; 
@@ -17,8 +16,6 @@ table.setAttribute("style", `
     align-items: center;
     width: 100%;
     height: 100%;
-    border: 0.3em solid #111;
-    border-radius: 3%;
 `);
 
 // CREAR OVERLAY DE LA VENTANA EMERGENTE
@@ -252,7 +249,7 @@ function crearDivEmergente(){
         background-color: white;
         padding: 1.7em;
         position: relative;
-        border: 0.2em solid #111;
+        border: 0.2em solid;
         border-radius: 0.5em;
     `);
     return divEmergente;
@@ -270,7 +267,7 @@ function onclickHabilidades(){
         nombreHabilidad.style = `
             text-align: center;
             width: 18em;
-            border: 0.1em solid;
+            border: 0.2em solid;
             border-radius: 0.3em;
             background-color: ${color};
             background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
@@ -308,7 +305,7 @@ function onclickMovimientos(){
         nombreMovimiento.style = `
             text-align: center;
             width: 18em;
-            border: 0.1em solid;
+            border: 0.2em solid;
             border-radius: 0.3em;
             background-color: ${color};
             background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);

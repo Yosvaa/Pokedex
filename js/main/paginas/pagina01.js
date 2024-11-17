@@ -2,15 +2,12 @@
 let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
-    margin: 0.2em;
     padding: 1em;
     display: flex; 
     flex-direction: column;
     justify-content: space-evenly;
     width: 100%;
     height: 100%;
-    border: 0.3em solid #111;
-    border-radius: 3%;
 `);
 
 export function pagina01(pokemon, color){
@@ -31,7 +28,7 @@ export function pagina01(pokemon, color){
             // AÑADIR NOMBRE DE ESTADÍSTICA
             let tdNameStat = document.createElement('td');
             tdNameStat.setAttribute("style", `
-                border: 0.2em solid;
+                border: 0.2em solid #222;
                 border-radius: 0.5em;
                 padding: 0.75em;
                 width: 50%;

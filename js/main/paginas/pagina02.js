@@ -2,7 +2,6 @@
 let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
-    margin: 0.2em;
     padding-left: 0.2em; 
     padding-right: 0.2em;
     padding-top: 0;
@@ -12,8 +11,6 @@ table.setAttribute("style", `
     justify-content: center;
     width: 100%;
     height: 100%;
-    border: 0.3em solid #111;
-    border-radius: 3%;
 `);
 
 export function pagina02(pokemon, color){
@@ -32,7 +29,7 @@ export function pagina02(pokemon, color){
                 align-items: center; 
                 max-width: 100%;
                 max-height: 100%;
-                border: 0.2em solid;
+                border: 0.2em solid #222;
                 border-radius: 0.5em;
                 background-color: ${color};
                 background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
