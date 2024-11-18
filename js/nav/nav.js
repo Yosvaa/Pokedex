@@ -57,7 +57,6 @@ estilos.textContent= `
 document.body.appendChild(estilos);
 
 function navFiltros() {
-    let body = document.getElementsByTagName('body')[0];
     let nav = document.getElementsByTagName('nav')[0];
     let div = document.createElement('div');
     div.setAttribute("class", "scroll-container");
@@ -90,5 +89,4 @@ function navFiltros() {
 
     // Agregar los elementos al DOM
     nav.appendChild(div);
-    body.appendChild(nav);
 }
