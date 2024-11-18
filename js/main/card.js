@@ -13,7 +13,7 @@ export function card(pokemon, color){
     // DIV CARD
     let divCard = document.createElement('div');
     divCard.setAttribute("style", `
-        padding: 0.7em; 
+        padding: 1em; 
         display: flex; 
         flex-direction: column; 
         align-items: center;
@@ -21,14 +21,13 @@ export function card(pokemon, color){
         width: 16em; 
         min-width: 16em; 
         max-width: 16em; 
-        border: 0.2em solid #111;
+        border: 0.2em solid ${color};
         border-radius: 1em;
         width: 100%;
         background-image: url('./img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, ${color} 45%);
         background-size: cover;
         background-position: center;
         border-right: none;
-        border-right: 0.15em dashed ${color};
     `);
 
     //  DIV NOMBRE+ID

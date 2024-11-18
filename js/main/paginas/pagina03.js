@@ -8,8 +8,8 @@ let color;
 let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
-    padding: 0.5em;
-    padding-bottom: 0; 
+    padding: 1em;
+    padding-bottom: 0;
     display: flex; 
     flex-direction: column;
     justify-content: center;
@@ -47,7 +47,7 @@ botonCerrar.setAttribute("style", `
     position: absolute;
     top: 0.1em;
     right: 0.1em;
-    font-size: 1.5em;
+    font-size: 2em;
     color: #333;
     cursor: pointer;
 `);
@@ -76,7 +76,6 @@ export function pagina03(pokemonAux, colorAux){
                 max-height: 100%;
                 border: 0.2em solid;
                 border-radius: 0.5em;
-                background-color: ${color};
                 background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
                 background-size: cover;
                 background-position: center;
@@ -269,7 +268,6 @@ function onclickHabilidades(){
             width: 18em;
             border: 0.2em solid;
             border-radius: 0.3em;
-            background-color: ${color};
             background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             background-size: cover;
             background-position: center;
@@ -307,7 +305,6 @@ function onclickMovimientos(){
             width: 18em;
             border: 0.2em solid;
             border-radius: 0.3em;
-            background-color: ${color};
             background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             background-size: cover;
             background-position: center;

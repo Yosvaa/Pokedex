@@ -2,7 +2,7 @@
 let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
-    padding: 1em;
+    padding: 2em;
     display: flex; 
     flex-direction: column;
     justify-content: space-evenly;

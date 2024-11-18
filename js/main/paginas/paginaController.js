@@ -12,12 +12,13 @@ export function paginas(pokemon, color){
         width: 25em;
         min-width: 25em;
         max-width: 25em;
-        border: 0.3em solid #111;
+        border: 0.3em solid #ddd;
         border-radius: 1.4em;
         border-left: none;
         background-image: url('./img/iconos/card.png');
         background-size: cover;
         background-position: center;
+        border-left: 0.3em dashed ${color};
     `);
 
     // MONTAR PAGINA

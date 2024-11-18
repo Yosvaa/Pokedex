@@ -2,10 +2,7 @@
 let table = document.createElement('table');
 table.id = "table";
 table.setAttribute("style", `
-    padding-left: 0.2em; 
-    padding-right: 0.2em;
-    padding-top: 0;
-    padding-bottom:0;
+    padding: 0 2em;
     display: flex; 
     flex-direction: column;
     justify-content: center;
@@ -31,7 +28,6 @@ export function pagina02(pokemon, color){
                 max-height: 100%;
                 border: 0.2em solid #222;
                 border-radius: 0.5em;
-                background-color: ${color};
                 background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
                 background-size: cover;
                 background-position: center;
@@ -46,9 +42,7 @@ export function pagina02(pokemon, color){
             let tdNameStat = document.createElement('td');
             tdNameStat.setAttribute("style", `
                 display: flex;
-                justify-content: center;
                 margin-bottom: 0.5em;
-                
             `);
 
             switch (estadistica) {
