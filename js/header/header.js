@@ -64,7 +64,6 @@ header {
 
     .titulo{
         marging:5px;
-        width : 500px;
         height: 80px;
         position: absolute;
         

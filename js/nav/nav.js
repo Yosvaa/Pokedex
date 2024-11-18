@@ -7,14 +7,13 @@ export function nav(){
 const estilos= document.createElement("style");
 estilos.textContent= `
         nav {
-            width: 70%;
+            width: 45em;
             height:20px;
             padding: 3px;
             background-color: aqua;
             border-radius: 5px;
-            marging-top:80px;
             position: absolute;
-            display:flex;
+            margin-top: 65px;
         }
 
         /*todo*/
