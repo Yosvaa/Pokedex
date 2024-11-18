@@ -3,7 +3,7 @@ import { main } from '../main/main.js';
 import { colorPokemon } from '../main/main.js';
 
 
-export function aside(){
+export function aside(arrayPokemons){
     let aside = document.getElementsByTagName('aside')[0];
     // BORRAR SU CONTENIDO SI TIENE
     while (aside.firstChild) {

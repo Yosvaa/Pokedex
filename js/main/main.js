@@ -21,7 +21,7 @@ export function main(id){
         font-family: 'Press Start 2P', sans-serif; 
         font-size: 16px;
         display: flex; 
-        width: 35.4m;
+        width: 35.4em;
         height: 29em;
         margin-top: 130px;
     `);
