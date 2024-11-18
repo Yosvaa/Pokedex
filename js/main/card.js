@@ -1,4 +1,4 @@
-import { pokemons } from '../pokemon.js';
+import { arrayPokemons } from '../pokemon.js';
 
 let MAX_HP = 0;
 let MAX_ATAQUE = 0;
@@ -143,15 +143,18 @@ function obtenerEstadisticasMaximas() {
     let max_defensa_especial = 0;
     let max_velocidad = 0;
 
-    pokemons.forEach(pokemon => {
-        let stat = pokemon.estadisticas_base;
+    arrayPokemons().forEach(pokemon => {
+        if (pokemon.estadisticas_base){
+           let stat = pokemon.estadisticas_base;
 
-        if (stat.hp > max_hp) max_hp = stat.hp;
-        if (stat.ataque > max_ataque) max_ataque = stat.ataque;
-        if (stat.defensa > max_defensa) max_defensa = stat.defensa;
-        if (stat.ataque_especial > max_ataque_especial) max_ataque_especial = stat.ataque_especial;
-        if (stat.defensa_especial > max_defensa_especial) max_defensa_especial = stat.defensa_especial;
-        if (stat.velocidad > max_velocidad) max_velocidad = stat.velocidad;
+            if (stat.hp > max_hp) max_hp = stat.hp;
+            if (stat.ataque > max_ataque) max_ataque = stat.ataque;
+            if (stat.defensa > max_defensa) max_defensa = stat.defensa;
+            if (stat.ataque_especial > max_ataque_especial) max_ataque_especial = stat.ataque_especial;
+            if (stat.defensa_especial > max_defensa_especial) max_defensa_especial = stat.defensa_especial;
+            if (stat.velocidad > max_velocidad) max_velocidad = stat.velocidad; 
+        }
+        
     });
 
     MAX_HP = max_hp;

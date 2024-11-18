@@ -1,9 +1,11 @@
+import { arrayPokemons } from '/js/pokemon.js';
 import { pokemons } from '/js/pokemon.js';
 import { main } from '../main/main.js';
 import { colorPokemon } from '../main/main.js';
+import { app } from '../app.js';
 
 
-export function aside(arrayPokemons){
+export function aside(arrayPokemonsAside){
     let aside = document.getElementsByTagName('aside')[0];
     // BORRAR SU CONTENIDO SI TIENE
     while (aside.firstChild) {
@@ -14,6 +16,7 @@ export function aside(arrayPokemons){
     aside.setAttribute("style", `
         font-family: 'Press Start 2P', sans-serif; 
         font-size: 16px;
+        display: flex;
         flex-direction: column; 
         width: 16.5em;
         height: 29em;
@@ -32,7 +35,10 @@ export function aside(arrayPokemons){
         `);
     
     // BUSCA EN EL ARRAY DE POKEMONS
-    pokemons.forEach(pokemon => {
+    if (!arrayPokemonsAside){
+        arrayPokemonsAside = arrayPokemons();
+    }
+    arrayPokemonsAside.forEach(pokemon => {
         let color = colorPokemon(pokemon);
 
         // DIV POKEMON
@@ -72,26 +78,47 @@ export function aside(arrayPokemons){
         nombre.setAttribute("style","font-size: 0.7em;");
         divPokemon.appendChild(nombre);
         
-        // TIPOS
-        // let tableTipos = document.createElement('table');
-        // tableTipos.setAttribute("style", "margin: 0.5em;");
-        
-
-        // let trTipo = document.createElement("tr");
-        // trTipo.setAttribute("style", "display: flex; justify-content: center; flex-wrap: wrap;")
-
-        // pokemon['tipos'].forEach(tipo => {
-        //     let img = document.createElement('img');
-        //     img.src = "./img/Tipo/" + tipo + ".png";
-        //     img.setAttribute("style","height: 0.7em; border: 0.1em solid #111; border-radius: 1em; margin: 0.1em;");
-
-        //     trTipo.appendChild(img);
-        // });
-        // tableTipos.appendChild(trTipo);
-
-        // divPokemon.appendChild(tableTipos);
         scrollContainer.appendChild(divPokemon);
     });
 
     aside.appendChild(scrollContainer);
+
+    let agregarPokemon = document.createElement("a");
+    agregarPokemon.style = `
+        padding: 1em;
+        margin-top: 1em;
+        cursor: pointer;
+        font-size: 11px;
+        text-align: center;
+        border: 0.3em solid #ddd;
+        border-radius: 1em;
+        text-decoration: none;
+        color: inherit;
+        background-color: white;
+    `;
+    agregarPokemon.textContent = "Agregar Pokémon";
+    agregarPokemon.href = "../../pages/agregar.html";
+
+    aside.appendChild(agregarPokemon);
+
+    let restaurarPokemons = document.createElement("a");
+    restaurarPokemons.style = `
+        padding: 1em;
+        margin-top: 1em;
+        cursor: pointer;
+        font-size: 11px;
+        text-align: center;
+        border: 0.3em solid #ddd;
+        border-radius: 1em;
+        text-decoration: none;
+        color: inherit;
+        background-color: white;
+    `;
+    restaurarPokemons.textContent = "Restaurar Pokémons";
+    restaurarPokemons.onclick = function () {
+        localStorage.setItem("pokemons", JSON.stringify(pokemons));
+        app();
+    }
+
+    aside.appendChild(restaurarPokemons);
 }

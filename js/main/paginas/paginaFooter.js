@@ -1,6 +1,9 @@
 import { pagina01 } from './pagina01.js';
 import { pagina02 } from './pagina02.js';
 import { pagina03 } from './pagina03.js';
+import { arrayPokemons } from '/js/pokemon.js';
+import { main } from '../main.js';
+import { aside } from '../../aside/aside.js';
 
 let pokemon;
 let color;
@@ -70,8 +73,8 @@ export function paginaFooter(idPaginaAux, pokemonAux, colorAux){
     }
 
     if (idPagina == 1){
-        botonIzq.style.backgroundImage = "url('../img/iconos/flechaVacia.png')";
-        botonIzq.style.cursor = 'auto';
+        botonIzq.style.backgroundImage = "url('../img/iconos/papelera.png')";
+        botonIzq.style.cursor = 'pointer';
 
         botonDch.style.backgroundImage = "url('../img/iconos/flechaDerecha.png')";
         botonDch.style.cursor = 'pointer';
@@ -104,6 +107,21 @@ export function paginaFooter(idPaginaAux, pokemonAux, colorAux){
 export function cambiarIzq(){
     let pagina = document.getElementById("pagina");
     let table = document.getElementById("table");
+
+    // BORRAR CON LA PAPELERA
+    if (idPagina == 1) {
+        let pokemonsArray = arrayPokemons();
+        // LO BORRA
+        pokemonsArray = pokemonsArray.filter(objetoPokemon => objetoPokemon.id !== pokemon.id);
+        localStorage.setItem("pokemons", JSON.stringify(pokemonsArray));
+
+        if(pokemon.id + 1){
+           main(pokemon.id + 1); 
+        } else {
+
+        }
+        aside();
+    } 
 
     if (idPagina == 2) {
         table.innerHTML = "";
