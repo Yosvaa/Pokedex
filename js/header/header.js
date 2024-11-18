@@ -7,11 +7,14 @@ const estilos = document.createElement("style");
 estilos.textContent = `
 
 header {
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     width:100%;
     background-color: white;
     margin-bottom:5px;
+    height:100px;
     position: absolute;
 }
+    
 .inputBusqueda{
     width: 28px;
     height: 25px;
@@ -32,7 +35,7 @@ header {
     }
     .inputBusqueda.activo {
     animation: example ease forwards;
-    animation-duration: 3s;
+    animation-duration: 1s;
     animation-delay: 0s;
     }
 
@@ -49,20 +52,26 @@ header {
     }
 
     .fotoLupa {
-        position: absolute;
-        width : 25px;
-        height: 25px;
+        width : 35px;
+        height: 35px;
         position: absolute;
         right: 0;
-        margin-right: 48.5px;
-        margin-top: 6px;
-
-    }
-    .fotoLupa.encima{
+        margin-right: 37px;
+        transform: rotate(347deg);
+        margin-top: 22px;
         Cursor : pointer;
     }
 
+    .titulo{
+        marging:5px;
+        width : 500px;
+        height: 80px;
+        position: absolute;
+        
+    }   
+
     .ulEstilo{
+        background-color:white;
         list-style-type:none;
         margin-top:30px;
         margin-right:9.3em; 
@@ -71,22 +80,32 @@ header {
         margin-right: 100px;
         margin-top: 20px;
     }
+    li{
+     background-color:white;}
+    
 `;
 document.head.appendChild(estilos);
 
 function barraBusqueda() {
 
     let header = document.getElementsByTagName('header')[0];
-    
     let img = document.createElement('img');
+    let titulo=document.createElement('img');
+
     img.setAttribute("src", "/img/iconos/lupa.png");
+    titulo.setAttribute("src","/img/iconos/tituloHeader.png");
+    img.setAttribute("src", "/img/iconos/lupa2s.png");
+
     img.setAttribute("class","fotoLupa");
+    titulo.setAttribute("class","titulo");
+
+    header.appendChild(titulo);
     header.appendChild(img);
     
     let input = document.createElement('input');
     input.setAttribute("id", "busqueda");
-    input.type = "text";
     input.setAttribute("class", "inputBusqueda");
+    input.type = "text";
     header.appendChild(input);
 
     let ul = document.createElement('ul');
@@ -107,25 +126,27 @@ function barraBusqueda() {
             ul.appendChild(li);
         });
     }
-
+    let resultado;
     input.addEventListener('input', () => {
         let valor = input.value.toLowerCase();// las letras que van metiendo
+        if(valor==""){
+            ul.style.visibility='hidden';
+        }else{
         //comprobamos si se incluyen en nuestro array de pokemons, y lo que nos
         // devuelva es el valor que mostraremos (las ocincidencias); 
-        let resultado = pokemons.filter(i => i['nombre'].toLowerCase().includes(valor));
+        resultado = pokemons.filter(i => i['nombre'].toLowerCase().includes(valor));
         //le pasamos el objeto con coincidencias para que lo muestre;
         mostrarResultados(resultado);
+        }
 
-    });
+    }); 
 
-    img.addEventListener("mouseover",()=>{
-        img.classList.toggle("encima");
-    });
+    if(resultado==1){
+        
+    }
 
     img.addEventListener("click",()=>{
         input.classList.toggle("activo");
     });
 
 }
-
-
