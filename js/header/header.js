@@ -77,6 +77,9 @@ document.head.appendChild(estilos);
 function titulo() {
 
     let header = document.getElementsByTagName('header')[0];
+    while (header.firstChild) {
+        header.removeChild(header.firstChild);
+    }
     let titulo=document.createElement('img');
 
     titulo.setAttribute("src","/img/iconos/tituloHeader.png");

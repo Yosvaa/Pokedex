@@ -135,6 +135,9 @@ document.body.appendChild(estilos);
 
 export function nav() {
     let nav = document.getElementsByTagName('nav')[0];
+    while (nav.firstChild) {
+        nav.removeChild(nav.firstChild);
+    }
     let div = document.createElement('div');
     let botonTipos = document.createElement('div');
 
@@ -154,7 +157,7 @@ export function nav() {
         img.onclick = function () {
             filtrarTipo(tipo);
         }
-        img.src = "./img/Tipo/" + tipo + ".png";
+        img.src = "../img/Tipo/" + tipo + ".png";
         img.setAttribute("style", "height: 1.1em; border: 0.1em solid #111; border-radius: 0.7em;");
         page.appendChild(img);
         div.appendChild(page);

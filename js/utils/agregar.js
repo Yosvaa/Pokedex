@@ -1,9 +1,21 @@
 import { arrayPokemons } from "../pokemon.js";
+import { body } from '../body/body.js';
+import { header } from '../header/header.js';
+import { aside } from '../aside/aside.js';
+import { nav } from '../nav/nav.js';
 // import { header } from "../js/header/header.js";
 
 document.addEventListener("DOMContentLoaded", () => {
+    body();
+    header();
+    nav();
+    aside(); 
     // Referencia al <main>
     const main = document.getElementsByTagName('main')[0];
+    while (main.firstChild) {
+        main.removeChild(main.firstChild);
+    }
+    
     
     // Crear formulario dinámico
     const form = document.createElement("form");
@@ -53,10 +65,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Agregar elementos al formulario
     form.appendChild(nameLabel);
     form.appendChild(nameInput);
+    form.appendChild(document.createElement('br'));
     form.appendChild(typeLabel);
     form.appendChild(typeSelect1);
     form.appendChild(typeLabel2);
     form.appendChild(typeSelect2);
+    form.appendChild(document.createElement('br'));
     form.appendChild(agregar);
 
     // Agregar formulario al main
@@ -96,25 +110,26 @@ document.addEventListener("DOMContentLoaded", () => {
         almacenPokemon.push(newPokemon);
         localStorage.setItem("pokemons", JSON.stringify(almacenPokemon));
 
+        location.href = "../index.html";
         // Actualizar la lista visible
-        displayPokemonList();
+        // displayPokemonList();
     });
 
-    // Mostrar la lista de Pokémon desde localStorage
-    function displayPokemonList() {
-        const almacenPokemon = arrayPokemons();
-        const pokemonList = document.createElement("ul");
-        almacenPokemon.forEach(p => {
-            const listItem = document.createElement("li");
-            listItem.textContent = `#${p.id} - ${p.nombre} (${p.tipos})`;
-            pokemonList.appendChild(listItem);
-        });
+    // // Mostrar la lista de Pokémon desde localStorage
+    // function displayPokemonList() {
+    //     const almacenPokemon = arrayPokemons();
+    //     const pokemonList = document.createElement("ul");
+    //     almacenPokemon.forEach(p => {
+    //         const listItem = document.createElement("li");
+    //         listItem.textContent = `#${p.id} - ${p.nombre} (${p.tipos})`;
+    //         pokemonList.appendChild(listItem);
+    //     });
 
-        // Eliminar lista previa y agregar la nueva
-        main.querySelector("ul")?.remove();
-        main.appendChild(pokemonList);
-    }
+    //     // Eliminar lista previa y agregar la nueva
+    //     main.querySelector("ul")?.remove();
+    //     main.appendChild(pokemonList);
+    // }
 
-    // Cargar lista inicial
-    displayPokemonList();
+    // // Cargar lista inicial
+    // displayPokemonList();
 });

@@ -70,7 +70,7 @@ export function aside(arrayPokemonsAside){
 
         // IMAGEN POKEMON
         let img = document.createElement('img');
-        img.src = "./img/Pokemon/" + pokemon['id'] + ".png";
+        img.src = "../img/Pokemon/" + pokemon['id'] + ".png";
         img.setAttribute("style","height: 1.6em;");
         divPokemon.appendChild(img);
 
