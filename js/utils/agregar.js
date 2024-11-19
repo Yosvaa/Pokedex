@@ -14,6 +14,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const main = document.getElementsByTagName('main')[0];
     while (main.firstChild) {
         main.removeChild(main.firstChild);
+
     }
     
     let divCard = document.createElement('div');
@@ -23,13 +24,15 @@ document.addEventListener("DOMContentLoaded", () => {
         flex-direction: column; 
         align-items: center;
         justify-content: space-between;  
-        border: 0.2em solid black;
+        border: 0.2em solid #888;
         border-radius: 1em;
         width: 100%;
-        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 28%, white 5%, black 22%);
+        font-family: 'Press Start 2P', sans-serif;
+        font-family: 'Press Start 2P', sans-serif;
+        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 28%, white 5%, #ddd 22%);
         background-size: cover;
         background-position: center;
-        border-right: none;
+        
     `);
 
 
@@ -42,12 +45,12 @@ document.addEventListener("DOMContentLoaded", () => {
     // Crear formulario dinámico
     const form = document.createElement("form");
     form.id = "pokemonForm";
-    form.setAttribute("style", "display: flex; flex-direction: column; align-items: center;");
+    form.setAttribute("style", "display: flex; flex-direction: column; align-items: center; ");
 
     // Campo de Nombre
     const nameLabel = document.createElement("label");
     nameLabel.textContent = "Nombre:";
-    nameLabel.setAttribute("style","display: flex; font-weight: bold; margin: 0; padding: 0em;");
+    nameLabel.setAttribute("style","display: flex; font-weight: bold; margin: 0; padding: 0em; ");
     const nameInput = document.createElement("input");
     nameInput.type = "text";
     nameInput.name = "nombre";
@@ -56,14 +59,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Campo de Tipo
     const typeLabel = document.createElement("label");
     typeLabel.textContent = "Tipo 1:";
-    typeLabel.setAttribute("style","font-weight: bold; margin: 0; padding: 0em;");
+    typeLabel.setAttribute("style","font-weight: bold; margin: 0; padding: 0em; ");
     const typeSelect1 = document.createElement("select");
     typeSelect1.name = "type";
     typeSelect1.required = false;
 
     const typeLabel2 = document.createElement("label");
     typeLabel2.textContent = "Tipo 2:";
-    typeLabel2.setAttribute("style","font-weight: bold; margin: 0; padding: 0em;");
+    typeLabel2.setAttribute("style","font-weight: bold; margin: 0; padding: 0em; ");
     const typeSelect2 = document.createElement("select");
     typeSelect2.name = "type";
     typeSelect2.required = false;
@@ -98,6 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
         text-decoration: none;
         color: inherit;
         background-color: white;
+        font-family: 'Press Start 2P', sans-serif; 
     `);
 
     // Agregar elementos al formulario
@@ -150,7 +154,7 @@ document.addEventListener("DOMContentLoaded", () => {
         almacenPokemon.push(newPokemon);
         localStorage.setItem("pokemons", JSON.stringify(almacenPokemon));
 
-        location.href = "../index.html";
+        location.href = "../index.html" + `?id=${newID}`;
         // Actualizar la lista visible
         // displayPokemonList();
     });

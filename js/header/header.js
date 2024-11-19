@@ -9,8 +9,7 @@ export function header() {
 const estilos = document.createElement("style");
 estilos.textContent = `
 
-header {
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+header {  
     width:52em;
     justify-content:center;
     margin:5px;
@@ -21,7 +20,6 @@ header {
     }
     
     .titulo{
-        
         marging:5px;
         height: 80px;
 
@@ -29,16 +27,16 @@ header {
         
     .inputBusqueda{
         width: 28px;
-        height: 25px;
+        height: 28px;
         position:absolute;
-        right:20px;
+        right:15px;
         visibility: hidden 4s;
-       
-        margin-top:28px;
+        font-family: 'Press Start 2P', sans-serif; 
+        top:23px;
         border-radius: 100px;
         outline: none;
         border: 3px solid #fd5959;
-        padding: 5px;
+        padding: 10px;
     }
 
     .inputBusqueda.activo {
@@ -65,7 +63,7 @@ header {
         height: 35px;
         position: absolute;
         z-index: 2;
-        margin-top:30px;
+        top:30px;
         right:25px;
         transform: rotate(347deg);
         Cursor : pointer;

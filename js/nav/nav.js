@@ -12,7 +12,6 @@ estilos.textContent = `
         height:40px;
         padding: 3px;
         margin-top: 130px;
-        
         font-family: 'Press Start 2P', sans-serif; 
         
         border-radius: 5px;
@@ -72,7 +71,7 @@ estilos.textContent = `
         height:fit-content;
         width:100px;
         background-color: white;
-       
+        cursor:pointer;
         justify-content:center;
        
         border: 3px solid rgb(221, 221, 221);
@@ -117,57 +116,7 @@ export function nav() {
     });
     nav.appendChild(div);
 
-    /*Buscador
 
-    let img = document.createElement('img');
-    img.setAttribute("src", "/img/iconos/lupa2s.png");
-    img.setAttribute("class", "fotoLupa");
-    nav.appendChild(img);
-
-    let input = document.createElement('input');
-    input.setAttribute("id", "busqueda");
-    input.setAttribute("class", "inputBusqueda");
-    input.type = "text";
-    nav.appendChild(input);
-
-    let ul = document.createElement('ul');
-    ul.setAttribute("class", "ulEstilo");
-
-    nav.appendChild(ul);
-
-    // mostrar en el aside los resultados
-    function mostrarResultados(resultado) {
-        aside(resultado);
-    }
-    let resultado;
-
-    // Evento para buscar mientras se escribe
-    input.addEventListener('input', () => {
-        let valor = input.value.toLowerCase(); // lo que van metiendo
-        if (valor === "") {
-            ul.style.visibility = 'hidden'; // sino hay texto, oculta el contenedor
-        } else {
-            ul.style.visibility = 'visible';
-            // filtra los Pokemons 
-            resultado = arrayPokemon.filter(pokemon =>
-                pokemon.nombre.toLowerCase().includes(valor)
-            );
-            // actualiza el aside 
-            mostrarResultados(resultado);
-        }
-    });
-    
-    //evento de enter
-    input.addEventListener("keydown", (evento) => {
-        if (evento.key === "Enter" && resultado && resultado.length > 0) {
-            aside([resultado[0]]); // muestra el primer Pokemons en el aside
-        }
-    }); */
-    
-    /* activa el despliegue del input 
-    img.addEventListener("click", () => {
-        input.classList.toggle("activo");
-    }); */
     /* activa el despliegue de los filtros */
     botonTipos.addEventListener("click", () => {
         div.classList.toggle("activo");

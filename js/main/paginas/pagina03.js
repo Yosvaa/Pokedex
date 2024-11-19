@@ -305,7 +305,7 @@ function onclickMovimientos(){
             width: 18em;
             border: 0.2em solid;
             border-radius: 0.3em;
-            background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+            background-image: url('../img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             background-size: cover;
             background-position: center;
             padding: 1em;
@@ -315,7 +315,7 @@ function onclickMovimientos(){
 
         // TIPO
         let img = document.createElement('img');
-        img.src = "./img/Tipo/" + movimiento.tipo + ".png";
+        img.src = "../img/Tipo/" + movimiento.tipo + ".png";
         img.setAttribute("style","height: 1.45em; border: 0.15em solid #111; border-radius: 1em; margin: 0.2em;");
 
         contenidoMovimientos.appendChild(img);

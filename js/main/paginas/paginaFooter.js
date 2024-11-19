@@ -2,7 +2,8 @@ import { pagina01 } from './pagina01.js';
 import { pagina02 } from './pagina02.js';
 import { pagina03 } from './pagina03.js';
 import { arrayPokemons } from '/js/pokemon.js';
-import { app } from '../../app.js';
+import { main } from '../main.js';
+import { aside } from '../../aside/aside.js';
 
 
 let pokemon;
@@ -112,10 +113,19 @@ export function cambiarIzq(){
     if (idPagina == 1) {
         let pokemonsArray = arrayPokemons();
         // LO BORRA
+        let actualID = pokemon['id'];
         pokemonsArray = pokemonsArray.filter(objetoPokemon => objetoPokemon.id !== pokemon.id);
         localStorage.setItem("pokemons", JSON.stringify(pokemonsArray));
 
-        app();
+        aside();
+        let idsDisponibles = pokemonsArray.map(p => p.id).sort((a, b) => a - b);
+        let siguienteID = idsDisponibles.find(id => id > actualID) || idsDisponibles[0];
+        location.href = `../index.html?id=${siguienteID}`;
+        if (idsDisponibles.length === 0) {
+            alert("No hay más Pokémon disponibles.");
+            location.href = "../agregar.html"; // Página agregar si queda vacio
+        }
+
     } 
 
     if (idPagina == 2) {
