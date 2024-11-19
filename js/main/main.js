@@ -1,4 +1,4 @@
-import { pokemons } from '/js/pokemon.js';
+import { arrayPokemons } from '/js/pokemon.js';
 import { paginas } from './paginas/paginaController.js';
 import { card } from './card.js';
 
@@ -19,6 +19,7 @@ export function main(id){
 
     // MAIN
     let main = document.getElementsByTagName('main')[0];
+    
     // BORRAR SU CONTENIDO SI TIENE
     while (main.firstChild) {
         main.removeChild(main.firstChild);
@@ -47,7 +48,7 @@ export function main(id){
 }
 
 function encontrarPokemon(id){
-    pokemons.forEach(objetoPokemon => {
+    arrayPokemons().forEach(objetoPokemon => {
         if (objetoPokemon['id'] == id){
             pokemon = objetoPokemon;
         }
@@ -104,6 +105,9 @@ export function colorPokemon(pokemon) {
             break;
         case "Siniestro":
             color = "rgba(132, 84, 132, 0.5)";
+            break;
+        case "Volador":
+            color = "rgba(131, 207, 234, 0.5)";
             break;
         default:
             color = "rgba(0, 0, 0, 0.2)";

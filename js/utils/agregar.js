@@ -1,12 +1,10 @@
-import { pokemons } from "../js/pokemon.js";
+import { arrayPokemons } from "../pokemon.js";
+// import { header } from "../js/header/header.js";
 
-if (!localStorage.getItem("pokemon")) {
-    localStorage.setItem("pokemon", JSON.stringify(pokemons));
-}
 document.addEventListener("DOMContentLoaded", () => {
     // Referencia al <main>
-    const main = document.querySelector("main");
-
+    const main = document.getElementsByTagName('main')[0];
+    
     // Crear formulario dinámico
     const form = document.createElement("form");
     form.id = "pokemonForm";
@@ -69,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         e.preventDefault(); // Evitar recarga de la página
 
         // Leer datos desde localStorage
-        const almacenPokemon = JSON.parse(localStorage.getItem("pokemon")) || [];
+        const almacenPokemon = arrayPokemons();
 
         // Obtener el último ID basado en los Pokémon existentes
         const lastID = almacenPokemon.length > 0
@@ -96,7 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // Guardar en localStorage (sin modificar el array original)
         almacenPokemon.push(newPokemon);
-        localStorage.setItem("pokemon", JSON.stringify(almacenPokemon));
+        localStorage.setItem("pokemons", JSON.stringify(almacenPokemon));
 
         // Actualizar la lista visible
         displayPokemonList();
@@ -104,7 +102,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Mostrar la lista de Pokémon desde localStorage
     function displayPokemonList() {
-        const almacenPokemon = JSON.parse(localStorage.getItem("pokemon")) || [];
+        const almacenPokemon = arrayPokemons();
         const pokemonList = document.createElement("ul");
         almacenPokemon.forEach(p => {
             const listItem = document.createElement("li");

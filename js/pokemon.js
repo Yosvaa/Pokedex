@@ -1,3 +1,10 @@
+export function arrayPokemons(){
+    if (!localStorage.getItem("pokemons")) {
+        localStorage.setItem("pokemons", JSON.stringify(pokemons));
+    }
+    return JSON.parse(localStorage.getItem("pokemons"));
+}
+
 export const pokemons = [
   {
     id: 1,
