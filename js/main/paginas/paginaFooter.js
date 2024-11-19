@@ -2,8 +2,8 @@ import { pagina01 } from './pagina01.js';
 import { pagina02 } from './pagina02.js';
 import { pagina03 } from './pagina03.js';
 import { arrayPokemons } from '/js/pokemon.js';
-import { main } from '../main.js';
-import { aside } from '../../aside/aside.js';
+import { app } from '../../app.js';
+
 
 let pokemon;
 let color;
@@ -115,12 +115,7 @@ export function cambiarIzq(){
         pokemonsArray = pokemonsArray.filter(objetoPokemon => objetoPokemon.id !== pokemon.id);
         localStorage.setItem("pokemons", JSON.stringify(pokemonsArray));
 
-        if(pokemon.id + 1){
-           main(pokemon.id + 1); 
-        } else {
-
-        }
-        aside();
+        app();
     } 
 
     if (idPagina == 2) {
