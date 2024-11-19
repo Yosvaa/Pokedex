@@ -17,7 +17,7 @@ export function aside(arrayPokemons){
         flex-direction: column; 
         width: 16.5em;
         height: 29em;
-        margin-top: 130px;
+        margin-top: 190px;
         margin-left: 0.5em;
     `);
 
@@ -29,8 +29,10 @@ export function aside(arrayPokemons){
             width: 100%;
             height: 100%;
             overflow: auto;
+            scroll-behavior: smooth;
+
         `);
-    
+         
     // BUSCA EN EL ARRAY DE POKEMONS
     pokemons.forEach(pokemon => {
         let color = colorPokemon(pokemon);

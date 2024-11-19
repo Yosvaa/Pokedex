@@ -1,91 +1,231 @@
-import { pokemons } from "../pokemon.js";
+import { array } from "../main/main.js";
+import { aside } from "../aside/aside.js";
 
-export function nav(){
-    navFiltros();
-}
+let arrayPokemons = array();
+const estilos = document.createElement("style");
 
-const estilos= document.createElement("style");
-estilos.textContent= `
-        nav {
-            width: 45em;
-            height:20px;
-            padding: 3px;
-            background-color: aqua;
-            border-radius: 5px;
-            position: absolute;
-            margin-top: 65px;
-        }
-
-        /*todo*/
-        nav::-webkit-scrollbar {
-            width: 5px;
-            height: 10px;
-        }
-        /* sombra del rectangulo*/
-        nav::-webkit-scrollbar-track {
-            box-shadow: inset 0 0 5px grey;
-            border-radius: 10px;
-        }
-
-        /* cosita que se mueve*/
-        nav::-webkit-scrollbar-thumb {
-            background: rgb(153, 82, 169);
-            border-radius: 10px; 
-        }
-
-        .scroll-container {
-            width: 100%;
-            height: 50px;
-            overflow-x: scroll;
-            overflow-y: hidden;
-            white-space: nowrap;
-            scroll-behavior: smooth;
-        }
+estilos.textContent = `
+    nav {
         
-        .scroll-page {
-            cursor: pointer; 
-            display:inline;
-            padding: 5px 10px;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            font-size: 1em;
+        margin-top:100px;
+        width:52em;
+        height:40px;
+        padding: 3px;
+        margin-top: 130px;
+        
+        font-family: 'Press Start 2P', sans-serif; 
+        background-image: url('./img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, #ece6e0  45%);
+        background-size: cover;
+        border-radius: 5px;
+        position: absolute;
+        display:flex;
+    }
+
+    /*todo*/
+    ::-webkit-scrollbar {
+        width: 10px;
+        height: 10px;
+    }
+    /* sombra del rectangulo*/
+     ::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 10px;
+    }
+
+    /* cosita que se mueve*/
+     ::-webkit-scrollbar-thumb {
+        background: #fd5959;
+        border-radius: 10px; 
+    }
+
+    .scroll-container {
+        visibility: hidden;
+
+        width: 110px;
+        height: 200px;
+        position: absolute;
+        margin-left:4px;
+        margin-top:31px;
+
+        background-color:white;
+        border-radius:10px;
+        overflow: scroll;
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+    }
+    
+    .scroll-page {
+        width: 110px;
+        height: 25px;
+
+        cursor: pointer;
+        padding: 5px;
+        justify-content: center;
+        align-self: center;
+        background-color:white;
+    }
+    
+    .scroll-container.activo{
+        visibility:visible;
+    }
+
+
+    .inputBusqueda{
+        width: 28px;
+        height: 25px;
+        position:absolute;
+        right:16px;
+        visibility: hidden 4s;
+        -webkit-appearance: none;
+        z-index: 1;
+       
+        
+        border-radius: 100px;
+        outline: none;
+        border: 3px solid #4eb9a5;
+        padding: 5px;
+    }
+
+    .inputBusqueda.activo {
+        animation: example ease forwards;
+        animation-duration: 1s;
+        animation-delay: 0s;
+    }
+
+    @keyframes example {
+        0% {
+            width: 28px;
+            visibility: visible;
         }
+        100% {
+            width: 150px;
+            visibility: visible;
+            
+        }
+
+    }
+
+    .fotoLupa {
+        width : 35px;
+        height: 35px;
+        position: absolute;
+        z-index: 2;
+        margin-top:2px;
+        margin-left: 93%;
+        transform: rotate(347deg);
+        Cursor : pointer;
+    }
+    
+    .botonTipos{
+        margin-top:8px;
+        height:fit-content;
+        width:100px;
+        background-color: #4eb9a5;
+        box-shadow: 3px -3px  #3e7b7c;
+       
+        border: 3px solid #060708;
+        border-radius:10px;
+        font-size: 12px;
+        padding:6px;
+        text-align :center;
+    }
+
 `;
 
 document.body.appendChild(estilos);
 
-function navFiltros() {
+export function nav() {
     let nav = document.getElementsByTagName('nav')[0];
     let div = document.createElement('div');
+    let botonTipos = document.createElement('div');
+
+    botonTipos.setAttribute("name", "Tipos");
+    botonTipos.setAttribute("class", "botonTipos");
+    botonTipos.textContent = "Tipos";
     div.setAttribute("class", "scroll-container");
+    nav.appendChild(botonTipos);
 
-    // Crear una copia del objeto pokemons
-    let copiaPokemons = Object.values(pokemons);
+    /*Filtro de tipos */
+    let arrayTipos = ["Normal", "Fuego", "Agua", "Eléctrico", "Planta", "Lucha", "Veneno", "Tierra", "Volador", "Psíquico", "Bicho", "Roca", "Fantasma", "Dragón", "Acero", "Hada", "Hielo", "Siniestro"];
+    arrayTipos.forEach(tipo => {
+        let page = document.createElement('div');
+        page.setAttribute("class", "scroll-page");
+        let img = document.createElement('img');
 
-    // Reducir la lista por tipo
-    let porTipo = copiaPokemons.reduce((acumulador, pokemon) => {
-        let { tipos } = pokemon; // Asume que 'tipos' es un array
-        if (Array.isArray(tipos)) {
-            tipos.forEach(tipo => {
-                if (!acumulador[tipo]) {
-                    acumulador[tipo] = [];
-                }
-                acumulador[tipo].push(pokemon);
-            });
+        img.onclick = function () {
+            funcion(tipo);
         }
-        return acumulador; // ¡Importante! Devuelve el acumulador
-    }, {});
+        img.src = "./img/Tipo/" + tipo + ".png";
+        img.setAttribute("style", "height: 1.1em; border: 0.1em solid #111; border-radius: 0.7em;");
+        page.appendChild(img);
+        div.appendChild(page);
+    });
+    nav.appendChild(div);
 
-    // Crear un div para cada tipo
-    Object.keys(porTipo).forEach(tipo => {
-        let divPage = document.createElement('div');
-        divPage.setAttribute("class", "scroll-page");
-        divPage.setAttribute("value", tipo);
-        divPage.textContent = tipo; // Muestra el nombre del tipo
-        div.appendChild(divPage);
+    /*Buscador */
+
+    let img = document.createElement('img');
+    img.setAttribute("src", "/img/iconos/lupa2s.png");
+    img.setAttribute("class", "fotoLupa");
+    nav.appendChild(img);
+
+    let input = document.createElement('input');
+    input.setAttribute("id", "busqueda");
+    input.setAttribute("class", "inputBusqueda");
+    input.type = "text";
+    nav.appendChild(input);
+
+    let ul = document.createElement('ul');
+    ul.setAttribute("class", "ulEstilo");
+
+    nav.appendChild(ul);
+    /**
+     * Con esta funcion creamos la forma en la que vamos a mostrar los resultados 
+     * en este caso es en forma de lista.
+     * @param {object} resultado 
+     */
+
+    function mostrarResultados(resultado) {
+        ul.innerHTML = ""; //limpia los resultados anteriores
+        resultado.forEach(i => {
+            let li = document.createElement('li');
+            li.textContent = i['nombre'];
+            ul.appendChild(li);
+        });
+    }
+
+    let resultado;
+    input.addEventListener('input', () => {
+        let valor = input.value.toLowerCase();// las letras que van metiendo
+        if (valor == "") {
+            ul.style.visibility = 'hidden';
+        } else {
+            //comprobamos si se incluyen en nuestro array de pokemons, y lo que nos
+            // devuelva es el valor que mostraremos (las ocincidencias); 
+            resultado = pokemons.filter(i => i['nombre'].toLowerCase().includes(valor));
+            //le pasamos el objeto con coincidencias para que lo muestre;
+            mostrarResultados(resultado);
+        }
+
     });
 
-    // Agregar los elementos al DOM
-    nav.appendChild(div);
+    /*eventos */
+    img.addEventListener("click", () => {
+        input.classList.toggle("activo");
+    });
+
+    botonTipos.addEventListener("click", () => {
+        div.classList.toggle("activo");
+    });
+
+    function filtrarTipo(tipo) {
+        let pokemonsFiltrados = [];
+        arrayPokemons.forEach(pokemon => {
+            if (pokemon['tipos'].includes(tipo)) {
+                pokemonsFiltrados.push(pokemon);
+            }
+        })
+        aside(pokemonsFiltrados);
+    }
+
 }

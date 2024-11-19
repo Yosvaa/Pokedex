@@ -2,6 +2,14 @@ import { pokemons } from '/js/pokemon.js';
 import { paginas } from './paginas/paginaController.js';
 import { card } from './card.js';
 
+export function array(){
+    let arrayPokemons=[]; 
+    if(!localStorage.getItem("arrayPokemons")){
+       arrayPokemons= localStorage.setItem("arrayPokemons",pokemons);
+    }
+    return arrayPokemons;
+
+}
 let pokemon;
 let color;
 
@@ -23,7 +31,7 @@ export function main(id){
         display: flex; 
         width: 35.4em;
         height: 29em;
-        margin-top: 130px;
+        margin-top: 190px;
     `);
     
     // AÑADIR FUENTE
