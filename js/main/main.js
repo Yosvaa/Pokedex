@@ -33,6 +33,7 @@ export function main(id){
         width: 35.4em;
         height: 29em;
         margin-top: 190px;
+
     `);
     
     // AÑADIR FUENTE

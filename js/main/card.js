@@ -24,6 +24,7 @@ export function card(pokemon, color){
         border: 0.2em solid ${color};
         border-radius: 1em;
         width: 100%;
+        background-color:white;
         background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, ${color} 45%);
         background-size: cover;
         background-position: center;

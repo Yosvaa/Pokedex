@@ -11,33 +11,33 @@ estilos.textContent = `
 
 header {
     font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    width:100%;
+    width:52em;
+    justify-content:center;
     margin:5px;
     padding:10px;
     height:100px;
     position: absolute;
-    margin-left:50px;
     
-}
+    }
     
     .titulo{
+        
         marging:5px;
         height: 80px;
-        position: absolute;
-        
+
     } 
         
-.inputBusqueda{
+    .inputBusqueda{
         width: 28px;
         height: 25px;
         position:absolute;
-        right:100px;
+        right:20px;
         visibility: hidden 4s;
        
         margin-top:28px;
         border-radius: 100px;
         outline: none;
-        border: 3px solid #4eb9a5;
+        border: 3px solid #fd5959;
         padding: 5px;
     }
 
@@ -66,7 +66,7 @@ header {
         position: absolute;
         z-index: 2;
         margin-top:30px;
-        right:105px;
+        right:25px;
         transform: rotate(347deg);
         Cursor : pointer;
     }

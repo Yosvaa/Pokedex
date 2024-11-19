@@ -14,8 +14,7 @@ estilos.textContent = `
         margin-top: 130px;
         
         font-family: 'Press Start 2P', sans-serif; 
-        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, #ece6e0  45%);
-        background-size: cover;
+        
         border-radius: 5px;
         position: absolute;
         display:flex;
@@ -57,72 +56,26 @@ estilos.textContent = `
     .scroll-page {
         width: 110px;
         height: 25px;
-
         cursor: pointer;
         padding: 5px;
         justify-content: center;
         align-self: center;
-        background-color:#4eb9a5;
+        background-color:white;
     }
     
     .scroll-container.activo{
         visibility:visible;
     }
-
-
-   /* .inputBusqueda{
-        width: 28px;
-        height: 25px;
-        position:absolute;
-        right:16px;
-        visibility: hidden 4s;
-       
-
-        border-radius: 100px;
-        outline: none;
-        border: 3px solid #4eb9a5;
-        padding: 5px;
-    }
-
-    .inputBusqueda.activo {
-        animation: example ease forwards;
-        animation-duration: 1s;
-        animation-delay: 0s;
-    }
-
-    @keyframes example {
-        0% {
-            width: 28px;
-            visibility: visible;
-        }
-        100% {
-            width: 150px;
-            visibility: visible;
-            
-        }
-
-    }
-
-    .fotoLupa {
-        width : 35px;
-        height: 35px;
-        position: absolute;
-        z-index: 2;
-        margin-top:2px;
-        margin-left: 93%;
-        transform: rotate(347deg);
-        Cursor : pointer;
-    }*/
     
     .botonTipos{
         margin-top:8px;
         height:fit-content;
         width:100px;
-        background-color: #4eb9a5;
-        box-shadow: 3px -3px  #3e7b7c;
+        background-color: white;
+       
         justify-content:center;
        
-        border: 3px solid #060708;
+        border: 3px solid rgb(221, 221, 221);
         border-radius:10px;
         font-size: 12px;
         padding:6px;
