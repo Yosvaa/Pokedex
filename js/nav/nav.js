@@ -14,7 +14,7 @@ estilos.textContent = `
         margin-top: 130px;
         
         font-family: 'Press Start 2P', sans-serif; 
-        background-image: url('./img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, #ece6e0  45%);
+        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, #ece6e0  45%);
         background-size: cover;
         border-radius: 5px;
         position: absolute;

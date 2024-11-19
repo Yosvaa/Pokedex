@@ -16,14 +16,38 @@ document.addEventListener("DOMContentLoaded", () => {
         main.removeChild(main.firstChild);
     }
     
-    
+    let divCard = document.createElement('div');
+    divCard.setAttribute("style", `
+        padding: 1em; 
+        display: flex; 
+        flex-direction: column; 
+        align-items: center;
+        justify-content: space-between;  
+        border: 0.2em solid black;
+        border-radius: 1em;
+        width: 100%;
+        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 28%, white 5%, black 22%);
+        background-size: cover;
+        background-position: center;
+        border-right: none;
+    `);
+
+
+    // IMAGEN POKEMON
+    let img = document.createElement('img');
+    img.src = "../img/iconos/nuevo.png";
+    img.setAttribute("style","height: 6em; margin-top: 4em;");
+    divCard.appendChild(img);
+
     // Crear formulario dinámico
     const form = document.createElement("form");
     form.id = "pokemonForm";
+    form.setAttribute("style", "display: flex; flex-direction: column; align-items: center;");
 
     // Campo de Nombre
     const nameLabel = document.createElement("label");
     nameLabel.textContent = "Nombre:";
+    nameLabel.setAttribute("style","display: flex; font-weight: bold; margin: 0; padding: 0em;");
     const nameInput = document.createElement("input");
     nameInput.type = "text";
     nameInput.name = "nombre";
@@ -32,12 +56,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Campo de Tipo
     const typeLabel = document.createElement("label");
     typeLabel.textContent = "Tipo 1:";
+    typeLabel.setAttribute("style","font-weight: bold; margin: 0; padding: 0em;");
     const typeSelect1 = document.createElement("select");
     typeSelect1.name = "type";
     typeSelect1.required = false;
 
     const typeLabel2 = document.createElement("label");
     typeLabel2.textContent = "Tipo 2:";
+    typeLabel2.setAttribute("style","font-weight: bold; margin: 0; padding: 0em;");
     const typeSelect2 = document.createElement("select");
     typeSelect2.name = "type";
     typeSelect2.required = false;
@@ -61,9 +87,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const agregar = document.createElement("button");
     agregar.type = "submit";
     agregar.textContent = "Agregar Pokémon";
+    agregar.setAttribute("style",`
+        padding: 1em;
+        margin-top: 1em;
+        cursor: pointer;
+        font-size: 11px;
+        text-align: center;
+        border: 0.3em solid #ddd;
+        border-radius: 1em;
+        text-decoration: none;
+        color: inherit;
+        background-color: white;
+    `);
 
     // Agregar elementos al formulario
     form.appendChild(nameLabel);
+    form.appendChild(document.createElement('br'));
     form.appendChild(nameInput);
     form.appendChild(document.createElement('br'));
     form.appendChild(typeLabel);
@@ -74,7 +113,8 @@ document.addEventListener("DOMContentLoaded", () => {
     form.appendChild(agregar);
 
     // Agregar formulario al main
-    main.appendChild(form);
+    divCard.appendChild(form);
+    main.appendChild(divCard);
 
     // Manejar el envío del formulario
     form.addEventListener("submit", (e) => {

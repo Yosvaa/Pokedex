@@ -24,7 +24,7 @@ export function card(pokemon, color){
         border: 0.2em solid ${color};
         border-radius: 1em;
         width: 100%;
-        background-image: url('./img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, ${color} 45%);
+        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 33%, white 5%, ${color} 45%);
         background-size: cover;
         background-position: center;
         border-right: none;
@@ -52,7 +52,7 @@ export function card(pokemon, color){
 
     // IMAGEN POKEMON
     let img = document.createElement('img');
-    img.src = "./img/Pokemon/" + pokemon['id'] + ".png";
+    img.src = "../img/Pokemon/" + pokemon['id'] + ".png";
     img.setAttribute("style","height: 9em; margin-top: 1em;");
     divCard.appendChild(img);
 
@@ -65,7 +65,7 @@ export function card(pokemon, color){
     pokemon['tipos'].forEach(tipo => {
         let td = document.createElement('td');
         img = document.createElement('img');
-        img.src = "./img/Tipo/" + tipo + ".png";
+        img.src = "../img/Tipo/" + tipo + ".png";
         img.setAttribute("style","height: 1.1em; border: 0.1em solid #111; border-radius: 0.7em;");
         td.appendChild(img);
         tr.appendChild(td);

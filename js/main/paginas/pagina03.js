@@ -76,7 +76,7 @@ export function pagina03(pokemonAux, colorAux){
                 max-height: 100%;
                 border: 0.2em solid;
                 border-radius: 0.5em;
-                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
+                background-image: url('../img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
                 background-size: cover;
                 background-position: center;
                 margin-left: 0.7em;
@@ -201,7 +201,7 @@ function crearDivEvoluciones(src){
     `;
 
     let img = document.createElement ("img");
-    img.src = "./img/Pokemon/" + src['id'] + ".png";
+    img.src = "../img/Pokemon/" + src['id'] + ".png";
     img.setAttribute("style","height: 4.5em;");
 
     let p = document.createElement("p");
@@ -268,7 +268,7 @@ function onclickHabilidades(){
             width: 18em;
             border: 0.2em solid;
             border-radius: 0.3em;
-            background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+            background-image: url('../img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             background-size: cover;
             background-position: center;
             margin: 1em;

@@ -53,7 +53,7 @@ export function aside(arrayPokemonsAside){
             gap: 0.5em;
             border-radius: 0.7em;
             cursor: pointer;
-            background-image: url('./img/iconos/card.png'), radial-gradient(circle at right, white, ${color});
+            background-image: url('../img/iconos/card.png'), radial-gradient(circle at right, white, ${color});
             background-size: cover;
             background-position: center;
         `);

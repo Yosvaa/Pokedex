@@ -28,7 +28,7 @@ export function pagina02(pokemon, color){
                 max-height: 100%;
                 border: 0.2em solid #222;
                 border-radius: 0.5em;
-                background-image: url('./img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
+                background-image: url('../img/iconos/card.png'), radial-gradient(circle at right 33%, white 5%, ${color} 45%);
                 background-size: cover;
                 background-position: center;
                 padding: 0.5em;
@@ -80,7 +80,7 @@ export function pagina02(pokemon, color){
 
                 pokemon[estadistica].forEach(tipo => {
                     let img = document.createElement('img');
-                    img.src = "./img/Tipo/" + tipo + ".png";
+                    img.src = "../img/Tipo/" + tipo + ".png";
                     img.setAttribute("style","height: 1.45em; border: 0.15em solid #111; border-radius: 1em; margin: 0.2em;");
 
                     tdTipo.appendChild(img);
