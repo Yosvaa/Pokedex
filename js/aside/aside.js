@@ -59,6 +59,15 @@ export function aside(arrayPokemonsAside){
         `);
 
         divPokemon.onclick = function () {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get("id");
+            if (!id) {
+                let idparm = pokemon['id'];
+                location.href = "../index.html" + `?id=${idparm}`;
+            } else if(id != pokemon['id']){
+                let idparm = pokemon['id'];
+                location.href = "../index.html" + `?id=${idparm}`
+            }
             main(pokemon['id']);
         }
 

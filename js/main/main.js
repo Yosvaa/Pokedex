@@ -2,12 +2,18 @@ import { arrayPokemons } from '/js/pokemon.js';
 import { paginas } from './paginas/paginaController.js';
 import { card } from './card.js';
 
+export function array(){
+    let arrayPokemons=[]; 
+    if(!localStorage.getItem("arrayPokemons")){
+       arrayPokemons= localStorage.setItem("arrayPokemons",pokemons);
+    }
+    return arrayPokemons;
+}
+
 let pokemon;
 let color;
 
 export function main(id){
-    console.log("id en main: " + id);
-    localStorage.setItem("pokemonID", id);
     encontrarPokemon(id);
     colorPokemon(pokemon);
 

@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", () => {
         almacenPokemon.push(newPokemon);
         localStorage.setItem("pokemons", JSON.stringify(almacenPokemon));
 
-        location.href = "../index.html";
+        location.href = "../index.html" + `?id=${newID}`;
         // Actualizar la lista visible
         // displayPokemonList();
     });
