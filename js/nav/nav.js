@@ -1,7 +1,7 @@
-import { array } from "../main/main.js";
 import { aside } from "../aside/aside.js";
+import { arrayPokemons } from "../pokemon.js";
 
-let arrayPokemons = array();
+let arrayPokemon = arrayPokemons();
 const estilos = document.createElement("style");
 
 estilos.textContent = `
@@ -44,8 +44,8 @@ estilos.textContent = `
         width: 110px;
         height: 200px;
         position: absolute;
-        margin-left:4px;
-        margin-top:31px;
+        margin-left:6px;
+        margin-top:40px;
 
         background-color:white;
         border-radius:10px;
@@ -62,7 +62,7 @@ estilos.textContent = `
         padding: 5px;
         justify-content: center;
         align-self: center;
-        background-color:white;
+        background-color:#4eb9a5;
     }
     
     .scroll-container.activo{
@@ -70,16 +70,14 @@ estilos.textContent = `
     }
 
 
-    .inputBusqueda{
+   /* .inputBusqueda{
         width: 28px;
         height: 25px;
         position:absolute;
         right:16px;
         visibility: hidden 4s;
-        -webkit-appearance: none;
-        z-index: 1;
        
-        
+
         border-radius: 100px;
         outline: none;
         border: 3px solid #4eb9a5;
@@ -114,7 +112,7 @@ estilos.textContent = `
         margin-left: 93%;
         transform: rotate(347deg);
         Cursor : pointer;
-    }
+    }*/
     
     .botonTipos{
         margin-top:8px;
@@ -122,6 +120,7 @@ estilos.textContent = `
         width:100px;
         background-color: #4eb9a5;
         box-shadow: 3px -3px  #3e7b7c;
+        justify-content:center;
        
         border: 3px solid #060708;
         border-radius:10px;
@@ -153,7 +152,7 @@ export function nav() {
         let img = document.createElement('img');
 
         img.onclick = function () {
-            funcion(tipo);
+            filtrarTipo(tipo);
         }
         img.src = "./img/Tipo/" + tipo + ".png";
         img.setAttribute("style", "height: 1.1em; border: 0.1em solid #111; border-radius: 0.7em;");
@@ -162,7 +161,7 @@ export function nav() {
     });
     nav.appendChild(div);
 
-    /*Buscador */
+    /*Buscador
 
     let img = document.createElement('img');
     img.setAttribute("src", "/img/iconos/lupa2s.png");
@@ -179,53 +178,51 @@ export function nav() {
     ul.setAttribute("class", "ulEstilo");
 
     nav.appendChild(ul);
-    /**
-     * Con esta funcion creamos la forma en la que vamos a mostrar los resultados 
-     * en este caso es en forma de lista.
-     * @param {object} resultado 
-     */
 
+    // mostrar en el aside los resultados
     function mostrarResultados(resultado) {
-        ul.innerHTML = ""; //limpia los resultados anteriores
-        resultado.forEach(i => {
-            let li = document.createElement('li');
-            li.textContent = i['nombre'];
-            ul.appendChild(li);
-        });
+        aside(resultado);
     }
-
     let resultado;
+
+    // Evento para buscar mientras se escribe
     input.addEventListener('input', () => {
-        let valor = input.value.toLowerCase();// las letras que van metiendo
-        if (valor == "") {
-            ul.style.visibility = 'hidden';
+        let valor = input.value.toLowerCase(); // lo que van metiendo
+        if (valor === "") {
+            ul.style.visibility = 'hidden'; // sino hay texto, oculta el contenedor
         } else {
-            //comprobamos si se incluyen en nuestro array de pokemons, y lo que nos
-            // devuelva es el valor que mostraremos (las ocincidencias); 
-            resultado = pokemons.filter(i => i['nombre'].toLowerCase().includes(valor));
-            //le pasamos el objeto con coincidencias para que lo muestre;
+            ul.style.visibility = 'visible';
+            // filtra los Pokemons 
+            resultado = arrayPokemon.filter(pokemon =>
+                pokemon.nombre.toLowerCase().includes(valor)
+            );
+            // actualiza el aside 
             mostrarResultados(resultado);
         }
-
     });
-
-    /*eventos */
+    
+    //evento de enter
+    input.addEventListener("keydown", (evento) => {
+        if (evento.key === "Enter" && resultado && resultado.length > 0) {
+            aside([resultado[0]]); // muestra el primer Pokemons en el aside
+        }
+    }); */
+    
+    /* activa el despliegue del input 
     img.addEventListener("click", () => {
         input.classList.toggle("activo");
-    });
-
+    }); */
+    /* activa el despliegue de los filtros */
     botonTipos.addEventListener("click", () => {
         div.classList.toggle("activo");
     });
-
+    
     function filtrarTipo(tipo) {
-        let pokemonsFiltrados = [];
-        arrayPokemons.forEach(pokemon => {
-            if (pokemon['tipos'].includes(tipo)) {
-                pokemonsFiltrados.push(pokemon);
-            }
-        })
-        aside(pokemonsFiltrados);
+        let pokemonsFiltrados = arrayPokemon.filter(pokemon =>
+            pokemon.tipos.includes(tipo)
+        );
+        aside(pokemonsFiltrados); // muestra los Pokemons filtrados
     }
+    
 
 }
