@@ -70,7 +70,11 @@ export function aside(arrayPokemonsAside){
 
         // IMAGEN POKEMON
         let img = document.createElement('img');
-        img.src = "../img/Pokemon/" + pokemon['id'] + ".png";
+        if(pokemon['id']>151){
+            img.src = "../img/iconos/nuevo.png";
+        } else{
+            img.src = "../img/Pokemon/" + pokemon['id'] + ".png";
+        }
         img.setAttribute("style","height: 1.6em;");
         divPokemon.appendChild(img);
 

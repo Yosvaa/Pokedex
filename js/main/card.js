@@ -52,7 +52,11 @@ export function card(pokemon, color){
 
     // IMAGEN POKEMON
     let img = document.createElement('img');
-    img.src = "../img/Pokemon/" + pokemon['id'] + ".png";
+    if(pokemon['id']>151){
+        img.src = "../img/iconos/nuevo.png";
+    } else{
+        img.src = "../img/Pokemon/" + pokemon['id'] + ".png";
+    }
     img.setAttribute("style","height: 9em; margin-top: 1em;");
     divCard.appendChild(img);
 

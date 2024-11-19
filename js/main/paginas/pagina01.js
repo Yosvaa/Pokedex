@@ -36,7 +36,7 @@ export function pagina01(pokemon, color){
                 align-items: center;
                 justify-content: flex-end;
                 margin-right: 0.5em;
-                background-image: url('../../img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
+                background-image: url('../img/iconos/card.png'), radial-gradient(circle at right 33%, white 10%, ${color} 75%);
             `);
 
             let numStat = pokemon[estadistica];
