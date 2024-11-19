@@ -15,7 +15,10 @@ document.addEventListener("DOMContentLoaded", () => {
     while (main.firstChild) {
         main.removeChild(main.firstChild);
     }
-    
+    let link = document.createElement('link');
+    link.href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap";
+    link.rel="stylesheet";
+    document.head.appendChild(link);
     let divCard = document.createElement('div');
     divCard.setAttribute("style", `
         padding: 1em; 
@@ -87,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const agregar = document.createElement("button");
     agregar.type = "submit";
     agregar.textContent = "Agregar Pokémon";
-    agregar.setAttribute("style",`
+    agregar.setAttribute("style",`font-family: 'Press Start 2P', sans-serif;
         padding: 1em;
         margin-top: 1em;
         cursor: pointer;
