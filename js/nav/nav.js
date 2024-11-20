@@ -47,6 +47,9 @@ estilos.textContent = `
         scroll-behavior: smooth;
         overflow-x: hidden;
     }
+    .scroll-container.activo{
+        visibility:visible;
+    }
     
     .scroll-page {
         width: 110px;
@@ -111,7 +114,7 @@ export function nav() {
 
     /* activa el despliegue de los filtros */
     botonTipos.addEventListener("click", () => {
-        div.style.visibility="visible";
+        div.classList.toggle("activo");
     });
 
     /**
