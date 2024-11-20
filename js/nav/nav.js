@@ -3,10 +3,8 @@ import { arrayPokemons } from "../pokemon.js";
 
 let arrayPokemon = arrayPokemons();
 const estilos = document.createElement("style");
-
 estilos.textContent = `
     nav {
-        
         margin-top:100px;
         width:52em;
         height:40px;
@@ -19,18 +17,16 @@ estilos.textContent = `
         display:flex;
     }
 
-    /*todo*/
     ::-webkit-scrollbar {
         width: 10px;
         height: 10px;
     }
-    /* sombra del rectangulo*/
+
      ::-webkit-scrollbar-track {
         box-shadow: inset 0 0 5px grey;
         border-radius: 10px;
     }
 
-    /* cosita que se mueve*/
      ::-webkit-scrollbar-thumb {
         background: #fd5959;
         border-radius: 10px; 
@@ -62,10 +58,6 @@ estilos.textContent = `
         background-color:white;
     }
     
-    .scroll-container.activo{
-        visibility:visible;
-    }
-    
     .botonTipos{
         margin-top:8px;
         height:fit-content;
@@ -75,7 +67,8 @@ estilos.textContent = `
         justify-content:center;
        
         border: 3px solid rgb(221, 221, 221);
-        border-radius:10px;
+        border-radius:10px; 
+        box-shadow: inset 0 0 5px grey;
         font-size: 12px;
         padding:6px;
         text-align :center;
@@ -116,17 +109,20 @@ export function nav() {
     });
     nav.appendChild(div);
 
-
     /* activa el despliegue de los filtros */
     botonTipos.addEventListener("click", () => {
-        div.classList.toggle("activo");
+        div.style.visibility="visible";
     });
-    
+
+    /**
+     * metodo para mostrar los tipos de pokemon en el aside
+     * @param {String} tipo 
+     */
     function filtrarTipo(tipo) {
         let pokemonsFiltrados = arrayPokemon.filter(pokemon =>
             pokemon.tipos.includes(tipo)
         );
-        aside(pokemonsFiltrados); // muestra los Pokemons filtrados
+        aside(pokemonsFiltrados); 
     }
     
 

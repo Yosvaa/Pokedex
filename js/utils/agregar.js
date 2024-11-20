@@ -16,7 +16,10 @@ document.addEventListener("DOMContentLoaded", () => {
         main.removeChild(main.firstChild);
 
     }
-    
+    let link = document.createElement('link');
+    link.href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap";
+    link.rel="stylesheet";
+    document.head.appendChild(link);
     let divCard = document.createElement('div');
     divCard.setAttribute("style", `
         padding: 1em; 
@@ -29,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         width: 100%;
         font-family: 'Press Start 2P', sans-serif;
         font-family: 'Press Start 2P', sans-serif;
-        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 28%, white 5%, #ddd 22%);
+        background-image: url('../img/iconos/card.png'), radial-gradient(circle at center 23%, white 17%, #f98d8d 60%);
         background-size: cover;
         background-position: center;
         
@@ -39,13 +42,13 @@ document.addEventListener("DOMContentLoaded", () => {
     // IMAGEN POKEMON
     let img = document.createElement('img');
     img.src = "../img/iconos/nuevo.png";
-    img.setAttribute("style","height: 6em; margin-top: 4em;");
+    img.setAttribute("style","height: 6em; margin-top: 30px;");
     divCard.appendChild(img);
 
     // Crear formulario dinámico
     const form = document.createElement("form");
     form.id = "pokemonForm";
-    form.setAttribute("style", "display: flex; flex-direction: column; align-items: center; ");
+    form.setAttribute("style", "display: flex; flex-direction: column; align-items: center;margin-top: 0; ");
 
     // Campo de Nombre
     const nameLabel = document.createElement("label");
@@ -59,14 +62,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Campo de Tipo
     const typeLabel = document.createElement("label");
     typeLabel.textContent = "Tipo 1:";
-    typeLabel.setAttribute("style","font-weight: bold; margin: 0; padding: 0em; ");
+    typeLabel.setAttribute("style","font-weight: bold; margin: 0; padding: 10px; ");
     const typeSelect1 = document.createElement("select");
     typeSelect1.name = "type";
     typeSelect1.required = false;
 
     const typeLabel2 = document.createElement("label");
     typeLabel2.textContent = "Tipo 2:";
-    typeLabel2.setAttribute("style","font-weight: bold; margin: 0; padding: 0em; ");
+    typeLabel2.setAttribute("style","font-weight: bold; margin: 0; padding: 10px;");
     const typeSelect2 = document.createElement("select");
     typeSelect2.name = "type";
     typeSelect2.required = false;
@@ -90,7 +93,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const agregar = document.createElement("button");
     agregar.type = "submit";
     agregar.textContent = "Agregar Pokémon";
-    agregar.setAttribute("style",`
+    agregar.setAttribute("style",`font-family: 'Press Start 2P', sans-serif;
         padding: 1em;
         margin-top: 1em;
         cursor: pointer;
@@ -102,6 +105,8 @@ document.addEventListener("DOMContentLoaded", () => {
         color: inherit;
         background-color: white;
         font-family: 'Press Start 2P', sans-serif; 
+        box-shadow: inset 0 0 5px grey;
+
     `);
 
     // Agregar elementos al formulario

@@ -37,6 +37,7 @@ header {
         outline: none;
         border: 3px solid #fd5959;
         padding: 10px;
+        box-shadow: inset 0 0 5px grey;
     }
 
     .inputBusqueda.activo {

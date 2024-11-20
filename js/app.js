@@ -4,6 +4,7 @@ import { header } from './header/header.js';
 import { aside } from './aside/aside.js';
 import { nav } from './nav/nav.js';
 import { footer } from './footer/footer.js';
+
 export function app() {
     const queryParams = new URLSearchParams(window.location.search);
     let id;

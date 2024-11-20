@@ -1,3 +1,4 @@
+
 export function footer() {
     let body = document.getElementsByTagName('body')[0];
     const estilos = document.createElement("style");
@@ -23,10 +24,11 @@ export function footer() {
         document.body.appendChild(div);
 
         window.addEventListener("resize",()=>{
-            if(innerWidth < screen.width  ){
+            if(window.innerWidth < screen.width){
                 div.style.visibility="hidden";
             }else{
                 div.style.visibility="visible";
             }
-        })
+        });
+        
 }

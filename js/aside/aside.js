@@ -110,6 +110,7 @@ export function aside(arrayPokemonsAside){
         text-decoration: none;
         color: inherit;
         background-color: white;
+        box-shadow: inset 0 0 5px grey;
     `;
     agregarPokemon.textContent = "Agregar Pokémon";
     agregarPokemon.href = "../../pages/agregar.html";
@@ -128,6 +129,7 @@ export function aside(arrayPokemonsAside){
         text-decoration: none;
         color: inherit;
         background-color: white;
+        box-shadow: inset 0 0 5px grey;
     `;
     restaurarPokemons.textContent = "Restaurar Pokémons";
     restaurarPokemons.onclick = function () {
