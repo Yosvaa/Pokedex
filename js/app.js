@@ -18,6 +18,7 @@ export function app() {
     header();
     nav();
     main(id);
+    main(id);
     aside();
     footer();
 }
